@@ -10,7 +10,8 @@ const nextConfig = {
   },
   // Performance optimizations
   experimental: {
-    optimizeCss: true,
+    // Disable optimizeCss to avoid requiring 'critters' during export/prerender
+    optimizeCss: false,
     optimizePackageImports: ['lucide-react'],
   },
   // Compiler optimizations
