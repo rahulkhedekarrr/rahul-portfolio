@@ -20,7 +20,7 @@ const ContactSection = ({ contactLinks }: ContactSectionProps) => {
       viewport={{ once: true, margin: "-100px" }}
     >
       <div className="max-w-7xl mx-auto">
-        <SectionHeader title="Contact Rahul Khedekar - Full Stack Developer" />
+        <SectionHeader title="Let's Connect" />
 
         <div className="max-w-4xl mx-auto">
           <motion.div

@@ -7,8 +7,9 @@ const blogPosts = [
   {
     id: "building-mern-app-nextjs",
     title: "Building a MERN App with Next.js: Complete Guide",
-    excerpt: "Learn how to build a full-stack MERN application using Next.js as the frontend framework. This comprehensive guide covers everything from setup to deployment.",
-    date: "2024-01-15",
+    excerpt:
+      "Learn how to build a full-stack MERN application using Next.js as the frontend framework. This comprehensive guide covers everything from setup to deployment.",
+    date: "2025-09-13",
     readTime: "8 min read",
     category: "MERN Stack",
     slug: "/blog/building-mern-app-nextjs",
@@ -16,8 +17,9 @@ const blogPosts = [
   {
     id: "nextjs-performance-optimization",
     title: "Next.js Performance Optimization: Core Web Vitals",
-    excerpt: "Discover essential techniques to optimize your Next.js applications for better Core Web Vitals scores and improved user experience.",
-    date: "2024-01-10",
+    excerpt:
+      "Discover essential techniques to optimize your Next.js applications for better Core Web Vitals scores and improved user experience.",
+    date: "2025-09-12",
     readTime: "6 min read",
     category: "Next.js",
     slug: "/blog/nextjs-performance-optimization",
@@ -25,8 +27,9 @@ const blogPosts = [
   {
     id: "react-state-management-best-practices",
     title: "React State Management: Best Practices for 2024",
-    excerpt: "Explore modern state management patterns in React applications, including Context API, Zustand, and Redux Toolkit comparisons.",
-    date: "2024-01-05",
+    excerpt:
+      "Explore modern state management patterns in React applications, including Context API, Zustand, and Redux Toolkit comparisons.",
+    date: "2025-09-10",
     readTime: "7 min read",
     category: "React",
     slug: "/blog/react-state-management-best-practices",
@@ -43,8 +46,8 @@ export default function BlogClient() {
           transition={{ duration: 0.6 }}
         >
           <div className="mb-12">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="text-white/70 hover:text-white mb-8 inline-block"
             >
               ← Back to Home
@@ -53,7 +56,8 @@ export default function BlogClient() {
               MERN Stack & Next.js Blog
             </h1>
             <p className="text-white/80 text-lg md:text-xl max-w-3xl">
-              Insights, tutorials, and best practices for modern web development with MERN stack and Next.js.
+              Insights, tutorials, and best practices for modern web development
+              with MERN stack and Next.js.
             </p>
           </div>
 
@@ -73,23 +77,23 @@ export default function BlogClient() {
                   </span>
                   <span className="text-white/60 text-sm">{post.readTime}</span>
                 </div>
-                
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors">
+
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-purple-200 transition-colors">
                   <Link href={post.slug} className="hover:underline">
                     {post.title}
                   </Link>
                 </h2>
-                
+
                 <p className="text-white/80 mb-6 leading-relaxed">
                   {post.excerpt}
                 </p>
-                
+
                 <div className="flex items-center justify-between">
                   <time className="text-white/60 text-sm">
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
                     })}
                   </time>
                   <Link

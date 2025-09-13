@@ -18,8 +18,7 @@ const FooterSection = () => {
         >
           <div className="text-center">
             <p className="text-white/80 text-optimized">
-              © 2025 Rahul Khedekar. Crafted with passion and modern
-              technologies.
+              © 2025 Rahul Khedekar. Built with precision and powered by innovation.
             </p>
           </div>
         </motion.div>

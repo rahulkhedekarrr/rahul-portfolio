@@ -20,7 +20,7 @@ const SkillsSection = ({ skillCategories }: SkillsSectionProps) => {
       viewport={{ once: true, margin: "-100px" }}
     >
       <div className="max-w-7xl mx-auto">
-        <SectionHeader title="MERN Stack & Web Development Skills" />
+        <SectionHeader title="Technical Skills" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {skillCategories.map((category) => (

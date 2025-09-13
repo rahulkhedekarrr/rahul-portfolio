@@ -50,18 +50,6 @@ const HeroCard = () => {
         >
           Khedekar
         </motion.span>
-        {/* <motion.span
-          className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white/90 mt-2"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            ease: [0.25, 0.1, 0.25, 1],
-            delay: 0.8,
-          }}
-        >
-          Full Stack Developer (MERN & Next.js)
-        </motion.span> */}
       </motion.h1>
       <motion.p
         className="text-lg sm:text-xl md:text-2xl text-white/80 mb-6 sm:mb-8 max-w-4xl mx-auto text-optimized px-4 sm:px-0"
@@ -77,7 +65,7 @@ const HeroCard = () => {
           transition: { duration: 0.3, ease: "easeOut" },
         }}
       >
-        Full Stack Web Developer specializing in the MERN stack and Next.js, crafting
+        Full Stack Web Developer specializing in the MERN stack, crafting
         exceptional digital experiences with modern technologies
       </motion.p>
       <motion.div

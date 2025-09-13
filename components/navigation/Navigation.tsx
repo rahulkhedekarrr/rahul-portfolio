@@ -136,8 +136,15 @@ const Navigation = memo(({ items }: NavigationProps) => {
                     href={item.href}
                     className="text-white/80 hover:text-white transition-colors duration-200 hover-optimized"
                     onClick={(e) => {
-                      e.preventDefault();
-                      smoothScrollTo(item.href);
+                      // Check if it's a route (starts with /) or a hash link
+                      if (item.href.startsWith('/')) {
+                        // For routes like /blog, let the browser handle navigation
+                        return;
+                      } else {
+                        // For hash links like #about, prevent default and use smooth scroll
+                        e.preventDefault();
+                        smoothScrollTo(item.href);
+                      }
                     }}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -256,13 +263,22 @@ const Navigation = memo(({ items }: NavigationProps) => {
                         href={item.href}
                         className="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200 text-lg font-medium"
                         onClick={(e) => {
-                          e.preventDefault();
-                          // First close the menu
-                          toggleMobileMenu();
-                          // Then scroll after menu closing animation is done
-                          setTimeout(() => {
-                            smoothScrollTo(item.href);
-                          }, 400);
+                          // Check if it's a route (starts with /) or a hash link
+                          if (item.href.startsWith('/')) {
+                            // For routes like /blog, let the browser handle navigation
+                            // Close the menu first
+                            toggleMobileMenu();
+                            return;
+                          } else {
+                            // For hash links like #about, prevent default and use smooth scroll
+                            e.preventDefault();
+                            // First close the menu
+                            toggleMobileMenu();
+                            // Then scroll after menu closing animation is done
+                            setTimeout(() => {
+                              smoothScrollTo(item.href);
+                            }, 400);
+                          }
                         }}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
