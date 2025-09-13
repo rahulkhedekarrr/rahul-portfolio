@@ -301,6 +301,31 @@ html.lenis {
   }
 }
 
+/* Enhanced mobile responsiveness */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Reduce padding on mobile for better space utilization */
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  /* Better text sizing for mobile */
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+}
+
 /* Additional performance optimizations */
 @media (prefers-reduced-motion: reduce) {
   * {
