@@ -28,11 +28,11 @@ export const metadata: Metadata = {
     title: "Rahul Khedekar | Full Stack Developer Portfolio",
     description:
       "Discover the work and expertise of Rahul Khedekar, a Full Stack Developer from Surat, Gujarat. Skilled in MERN, Next.js, and building modern, scalable applications.",
-    url: "https://your-portfolio-link.com",
+    url: "https://www.rahulkhedekar.in",
     siteName: "Rahul Khedekar Portfolio",
     images: [
       {
-        url: "https://your-portfolio-link.com/og-image.jpg", // replace with actual image link
+        url: "https://www.rahulkhedekar.in/images/profile.jpg", // replace with actual image link
         width: 1200,
         height: 630,
         alt: "Rahul Khedekar - Full Stack Developer Surat Gujarat",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     description:
       "Professional portfolio of Rahul Khedekar, a Full Stack Web Developer from Surat, Gujarat. Specializing in MERN Stack & Next.js development.",
     creator: "@rahulkhedekarr", // replace if you have one
-    images: ["https://your-portfolio-link.com/og-image.jpg"], // replace with actual image link
+    images: ["https://www.rahulkhedekar.in/images/profile.jpg"], // replace with actual image link
   },
-  metadataBase: new URL("https://your-portfolio-link.com"),
+  metadataBase: new URL("https://www.rahulkhedekar.in"),
 };
 
 export default function RootLayout({
