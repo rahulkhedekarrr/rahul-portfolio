@@ -20,7 +20,7 @@ const AboutSection = ({ aboutItems }: AboutSectionProps) => {
       viewport={{ once: true, margin: "-100px" }}
     >
       <div className="max-w-7xl mx-auto">
-        <SectionHeader title="About Me" />
+        <SectionHeader title="About Rahul Khedekar - Full Stack Developer" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           <motion.div
