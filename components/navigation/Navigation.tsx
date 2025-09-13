@@ -225,7 +225,7 @@ const Navigation = memo(({ items }: NavigationProps) => {
               exit={{ x: "100%" }}
               transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <div className="h-screen backdrop-blur-optimized bg-slate-900/95 border-l border-white/20 shadow-2xl flex flex-col">
+              <div className="h-screen backdrop-blur-xl bg-[#0a0a0a]/98 border-l border-white/20 shadow-2xl flex flex-col">
                 {/* Menu Header */}
                 <div className="flex items-center justify-between p-6 border-b border-white/10 flex-shrink-0">
                   <motion.div
@@ -257,11 +257,12 @@ const Navigation = memo(({ items }: NavigationProps) => {
                         className="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200 text-lg font-medium"
                         onClick={(e) => {
                           e.preventDefault();
-                          smoothScrollTo(item.href);
-                          // Close mobile menu after a short delay to allow scroll to start
+                          // First close the menu
+                          toggleMobileMenu();
+                          // Then scroll after menu closing animation is done
                           setTimeout(() => {
-                            toggleMobileMenu();
-                          }, 100);
+                            smoothScrollTo(item.href);
+                          }, 400);
                         }}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}

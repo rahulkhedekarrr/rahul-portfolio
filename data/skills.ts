@@ -33,14 +33,14 @@ export const skillCategories: SkillCategory[] = [
     id: "database",
     title: "Database",
     icon: Database,
-    color: "text-green-400",
+    color: "!text-green-400",
     skills: ["MongoDB", "Mongoose", "Database Indexing & Query Optimization"],
   },
   {
     id: "tools",
     title: "Tools & Others",
     icon: Smartphone,
-    color: "text-pink-400",
+    color: "!text-pink-400",
     skills: [
       "Git & GitHub",
       "Redux",
