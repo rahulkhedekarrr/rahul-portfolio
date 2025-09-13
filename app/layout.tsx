@@ -121,6 +121,7 @@ export default function RootLayout({
             __html: JSON.stringify(jsonLd),
           }}
         />
+        <meta name="google-site-verification" content="google26687b3862aee1fc" />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
           strategy="afterInteractive"
