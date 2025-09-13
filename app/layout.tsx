@@ -8,7 +8,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
-  description: "Rahul Khedekar - Full Stack Developer (MERN & Next.js). Explore my projects, skills, and contact me for web development services.",
+  description:
+    "Rahul Khedekar - Full Stack Developer (MERN & Next.js). Explore my projects, skills, and contact me for web development services.",
   keywords: [
     "Rahul Khedekar",
     "Full Stack Developer Surat",
@@ -36,14 +37,15 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
     title: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
-    description: "Rahul Khedekar - Full Stack Developer (MERN & Next.js). Explore my projects, skills, and contact me for web development services.",
+    description:
+      "Rahul Khedekar - Full Stack Developer (MERN & Next.js). Explore my projects, skills, and contact me for web development services.",
     url: "https://www.rahulkhedekar.in",
     siteName: "Rahul Khedekar Portfolio",
     images: [
@@ -60,7 +62,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
-    description: "Rahul Khedekar - Full Stack Developer (MERN & Next.js). Explore my projects, skills, and contact me for web development services.",
+    description:
+      "Rahul Khedekar - Full Stack Developer (MERN & Next.js). Explore my projects, skills, and contact me for web development services.",
     creator: "@rahulkhedekarr",
     images: ["https://www.rahulkhedekar.in/og-image.svg"],
   },
@@ -78,19 +81,20 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Rahul Khedekar",
-    "url": "https://www.rahulkhedekar.in",
-    "sameAs": [
+    name: "Rahul Khedekar",
+    url: "https://www.rahulkhedekar.in",
+    sameAs: [
       "https://www.linkedin.com/in/rahulkhedekarr",
-      "https://github.com/rahulkhedekarr"
+      "https://github.com/rahulkhedekarr",
     ],
-    "jobTitle": "Full Stack Developer",
-    "worksFor": {
+    jobTitle: "Full Stack Developer",
+    worksFor: {
       "@type": "Organization",
-      "name": "Freelance"
+      name: "Freelance",
     },
-    "description": "Full Stack Developer specializing in MERN Stack and Next.js development",
-    "knowsAbout": [
+    description:
+      "Full Stack Developer specializing in MERN Stack and Next.js development",
+    knowsAbout: [
       "MERN Stack",
       "Next.js",
       "React.js",
@@ -101,14 +105,14 @@ export default function RootLayout({
       "JavaScript",
       "Web Development",
       "Frontend Development",
-      "Backend Development"
+      "Backend Development",
     ],
-    "address": {
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Surat",
-      "addressRegion": "Gujarat",
-      "addressCountry": "India"
-    }
+      addressLocality: "Surat",
+      addressRegion: "Gujarat",
+      addressCountry: "India",
+    },
   };
 
   return (
@@ -121,9 +125,12 @@ export default function RootLayout({
             __html: JSON.stringify(jsonLd),
           }}
         />
-        <meta name="google-site-verification" content="mbF5CGhdELXBL-_Lo8TzonZy3XPmtr8qvKBQvxwmVkc" />
+        <meta
+          name="google-site-verification"
+          content="mbF5CGhdELXBL-_Lo8TzonZy3XPmtr8qvKBQvxwmVkc"
+        />
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZVLPLVXNYY"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -131,7 +138,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'GA_MEASUREMENT_ID');
+            gtag('config', 'G-ZVLPLVXNYY');
           `}
         </Script>
       </head>
