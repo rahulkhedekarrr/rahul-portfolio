@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, memo } from "react";
 import { m as motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Mail, Linkedin } from "lucide-react";
+import { X, Mail, Linkedin } from "lucide-react";
 import { NavItem } from "../../types";
 import { smoothScrollTo } from "../../utils/smoothScroll";
 
@@ -17,18 +17,6 @@ const Navigation = memo(({ items }: NavigationProps) => {
     setIsMobileMenuOpen((prev) => !prev);
   }, []);
 
-  // Remove scroll effect - navbar stays consistent
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollTop = window.scrollY;
-  //     setIsScrolled(scrollTop > 20);
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
-
-  // Close mobile menu when clicking outside or on escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isMobileMenuOpen) {
@@ -38,13 +26,11 @@ const Navigation = memo(({ items }: NavigationProps) => {
 
     if (isMobileMenuOpen) {
       document.addEventListener("keydown", handleEscape);
-      // Prevent body scroll when mobile menu is open
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
       document.body.style.width = "100%";
       document.body.style.top = `-${window.scrollY}px`;
     } else {
-      // Restore body scroll
       const scrollY = document.body.style.top;
       document.body.style.overflow = "unset";
       document.body.style.position = "";
@@ -57,7 +43,6 @@ const Navigation = memo(({ items }: NavigationProps) => {
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      // Cleanup on unmount
       document.body.style.overflow = "unset";
       document.body.style.position = "";
       document.body.style.width = "";
@@ -67,15 +52,8 @@ const Navigation = memo(({ items }: NavigationProps) => {
 
   return (
     <>
-      <motion.nav
+      <nav
         className="fixed top-0 left-0 right-0 z-50 p-4 sm:p-6 smooth-scroll"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.8,
-          ease: [0.25, 0.1, 0.25, 1],
-          delay: 0.1,
-        }}
         style={{
           background: "transparent",
           backdropFilter: "none",
@@ -85,252 +63,161 @@ const Navigation = memo(({ items }: NavigationProps) => {
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
-            className="group rounded-2xl border border-white/20 backdrop-blur-optimized p-4 hover-optimized gpu-accelerated transition-all duration-300"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-              ease: [0.25, 0.1, 0.25, 1],
-              delay: 0.2,
-            }}
-            whileHover={{
-              scale: 1.02,
-              transition: { duration: 0.3, ease: "easeOut" },
-            }}
-            whileTap={{ scale: 0.98 }}
+            className="group rounded-2xl border border-white/20 backdrop-blur-optimized p-4 hover-optimized"
             style={{
-              backgroundColor: "rgba(255, 255, 255, 0.08)", // ✅ your requested background
+              backgroundColor: "rgba(255, 255, 255, 0.08)",
               backdropFilter: "blur(10px)",
               WebkitBackdropFilter: "blur(10px)",
-              boxShadow: "none", // ✅ removes shadow
+              boxShadow: "none",
             }}
+            whileHover={{ scale: 1.015 }}
+            whileTap={{ scale: 0.99 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <div className="flex justify-between items-center">
               <motion.div
                 className="text-xl sm:text-2xl font-bold text-white"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.25, 0.1, 0.25, 1],
-                  delay: 0.3,
-                }}
-                whileHover={{
-                  scale: 1.1,
-                  rotate: 2,
-                  transition: { duration: 0.3, ease: "easeOut" },
-                }}
+                whileHover={{ scale: 1.08, rotate: 2 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
               >
                 RK
               </motion.div>
 
-              {/* Desktop Navigation */}
               <div className="hidden md:flex space-x-6 lg:space-x-8">
-                {items.map((item, index) => (
+                {items.map((item) => (
                   <motion.a
                     key={item.id}
                     href={item.href}
                     className="text-white/80 hover:text-white transition-colors duration-200 hover-optimized"
                     onClick={(e) => {
-                      // Check if it's a route (starts with /) or a hash link
-                      if (item.href.startsWith('/')) {
-                        // For routes like /blog, let the browser handle navigation
-                        return;
-                      } else {
-                        // For hash links like #about, prevent default and use smooth scroll
-                        e.preventDefault();
-                        smoothScrollTo(item.href);
-                      }
+                      if (item.href.startsWith("/")) return;
+                      e.preventDefault();
+                      smoothScrollTo(item.href);
                     }}
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      ease: [0.25, 0.1, 0.25, 1],
-                      delay: 0.4 + index * 0.08,
-                    }}
-                    whileHover={{
-                      scale: 1.05,
-                      y: -2,
-                      transition: { duration: 0.2, ease: "easeOut" },
-                    }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                   >
                     {item.label}
                   </motion.a>
                 ))}
               </div>
 
-              {/* Mobile Hamburger Menu Button */}
               <motion.button
-                className="md:hidden relative z-[100] p-2 rounded-xl backdrop-blur-optimized border border-white/20 hover-optimized gpu-accelerated"
+                type="button"
+                className="md:hidden relative z-[100] p-2 rounded-xl backdrop-blur-optimized border border-white/20 hover-optimized"
                 onClick={toggleMobileMenu}
+                aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                aria-label="Toggle menu"
               >
-                <motion.div
-                  className="w-6 h-6 flex flex-col justify-center items-center"
-                  animate={isMobileMenuOpen ? "open" : "closed"}
-                >
-                  <motion.span
-                    className="w-6 h-0.5 bg-white block rounded-full"
-                    variants={{
-                      closed: { rotate: 0, y: 0 },
-                      open: { rotate: 45, y: 6 },
-                    }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                <div className="w-6 h-6 flex flex-col justify-center items-center">
+                  <span
+                    className={`w-6 h-0.5 bg-white block rounded-full transition-transform duration-300 ${
+                      isMobileMenuOpen ? "translate-y-[6px] rotate-45" : ""
+                    }`}
                   />
-                  <motion.span
-                    className="w-6 h-0.5 bg-white block rounded-full mt-1"
-                    variants={{
-                      closed: { opacity: 1 },
-                      open: { opacity: 0 },
-                    }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  <span
+                    className={`w-6 h-0.5 bg-white block rounded-full mt-1 transition-opacity duration-300 ${
+                      isMobileMenuOpen ? "opacity-0" : "opacity-100"
+                    }`}
                   />
-                  <motion.span
-                    className="w-6 h-0.5 bg-white block rounded-full mt-1"
-                    variants={{
-                      closed: { rotate: 0, y: 0 },
-                      open: { rotate: -45, y: -6 },
-                    }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  <span
+                    className={`w-6 h-0.5 bg-white block rounded-full mt-1 transition-transform duration-300 ${
+                      isMobileMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
+                    }`}
                   />
-                </motion.div>
+                </div>
               </motion.button>
             </div>
           </motion.div>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Full-Screen Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Mobile Menu Overlay */}
             <motion.div
               className="fixed inset-0 z-[90] md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.25 }}
               onClick={toggleMobileMenu}
             >
               <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
             </motion.div>
 
-            {/* Mobile Menu Panel */}
             <motion.div
               className="fixed top-0 right-0 h-screen w-72 sm:w-80 max-w-[85vw] z-[100] md:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <div className="h-screen backdrop-blur-xl bg-[#0a0a0a]/98 border-l border-white/20 shadow-2xl flex flex-col">
-                {/* Menu Header */}
                 <div className="flex items-center justify-between p-6 border-b border-white/10 flex-shrink-0">
-                  <motion.div
-                    className="text-2xl font-bold text-white"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                  >
-                    RK
-                  </motion.div>
-                  <motion.button
+                  <div className="text-2xl font-bold text-white">RK</div>
+                  <button
+                    type="button"
                     className="p-2 rounded-xl hover:bg-white/10 transition-colors"
                     onClick={toggleMobileMenu}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                     aria-label="Close menu"
                   >
                     <X className="w-6 h-6 text-white" />
-                  </motion.button>
+                  </button>
                 </div>
 
-                {/* Menu Items - Scrollable Content */}
                 <div className="flex-1 overflow-y-auto p-6">
                   <div className="space-y-2">
-                    {items.map((item, index) => (
-                      <motion.a
+                    {items.map((item) => (
+                      <a
                         key={item.id}
                         href={item.href}
                         className="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200 text-lg font-medium"
                         onClick={(e) => {
-                          // Check if it's a route (starts with /) or a hash link
-                          if (item.href.startsWith('/')) {
-                            // For routes like /blog, let the browser handle navigation
-                            // Close the menu first
+                          if (item.href.startsWith("/")) {
                             toggleMobileMenu();
                             return;
-                          } else {
-                            // For hash links like #about, prevent default and use smooth scroll
-                            e.preventDefault();
-                            // First close the menu
-                            toggleMobileMenu();
-                            // Then scroll after menu closing animation is done
-                            setTimeout(() => {
-                              smoothScrollTo(item.href);
-                            }, 400);
                           }
+                          e.preventDefault();
+                          toggleMobileMenu();
+                          setTimeout(() => {
+                            smoothScrollTo(item.href);
+                          }, 300);
                         }}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{
-                          duration: 0.4,
-                          delay: 0.2 + index * 0.1,
-                        }}
-                        whileHover={{
-                          scale: 1.02,
-                          x: 8,
-                          transition: { duration: 0.2 },
-                        }}
-                        whileTap={{ scale: 0.98 }}
                       >
                         {item.label}
-                      </motion.a>
+                      </a>
                     ))}
                   </div>
 
-                  {/* Contact Links in Mobile Menu */}
-                  <motion.div
-                    className="mt-8 pt-6 border-t border-white/10"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.6 }}
-                  >
+                  <div className="mt-8 pt-6 border-t border-white/10">
                     <h3 className="text-white/60 text-sm font-medium mb-4 uppercase tracking-wider">
                       Get In Touch
                     </h3>
                     <div className="space-y-3">
-                      <motion.a
+                      <a
                         href="https://mail.google.com/mail/?view=cm&fs=1&to=khedekarrahul4@gmail.com"
                         className="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/10 transition-all duration-200"
-                        whileHover={{ scale: 1.02, x: 4 }}
-                        whileTap={{ scale: 0.98 }}
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <Mail className="w-5 h-5 text-purple-400" />
                         <span className="text-white/80">Email</span>
-                      </motion.a>
-                      <motion.a
+                      </a>
+                      <a
                         href="https://linkedin.com/in/rahulkhedekarr"
                         className="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/10 transition-all duration-200"
-                        whileHover={{ scale: 1.02, x: 4 }}
-                        whileTap={{ scale: 0.98 }}
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <Linkedin className="w-5 h-5 text-cyan-400" />
                         <span className="text-white/80">LinkedIn</span>
-                      </motion.a>
+                      </a>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.div>

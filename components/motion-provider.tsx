@@ -2,7 +2,6 @@
 
 import { LazyMotion, MotionConfig } from "framer-motion";
 import React, { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
 
 function loadFeatures() {
   return import("framer-motion").then((mod) => mod.domAnimation);
@@ -17,27 +16,39 @@ export function MotionProvider({ children }: MotionProviderProps) {
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    const isNarrow = window.matchMedia("(max-width: 768px)").matches;
 
-    if (prefersReduced) return;
+    // Skip Lenis on mobile / touch / reduced-motion to cut main-thread rAF cost
+    if (prefersReduced || isCoarsePointer || isNarrow) return;
 
-    const lenis = new Lenis({
-      duration: 1.1,
-      smoothWheel: true,
-      gestureOrientation: "vertical",
-      wheelMultiplier: 1,
-      touchMultiplier: 1.2,
+    let destroyed = false;
+    let rafId = 0;
+    let lenis: { raf: (time: number) => void; destroy: () => void } | null =
+      null;
+
+    import("@studio-freight/lenis").then(({ default: Lenis }) => {
+      if (destroyed) return;
+
+      lenis = new Lenis({
+        duration: 1.1,
+        smoothWheel: true,
+        gestureOrientation: "vertical",
+        wheelMultiplier: 1,
+        touchMultiplier: 1.2,
+      });
+
+      const raf = (time: number) => {
+        lenis?.raf(time);
+        rafId = requestAnimationFrame(raf);
+      };
+      rafId = requestAnimationFrame(raf);
     });
 
-    let rafId: number;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
-    rafId = requestAnimationFrame(raf);
-
     return () => {
+      destroyed = true;
       cancelAnimationFrame(rafId);
-      lenis.destroy();
+      lenis?.destroy();
     };
   }, []);
 
@@ -45,7 +56,7 @@ export function MotionProvider({ children }: MotionProviderProps) {
     <LazyMotion features={loadFeatures} strict>
       <MotionConfig
         reducedMotion="user"
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
       >
         {children}
       </MotionConfig>

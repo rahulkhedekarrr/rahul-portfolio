@@ -1,7 +1,11 @@
+# *
 User-agent: *
 Allow: /
+Disallow: /api/*
+Disallow: /admin/*
 
-Disallow: /api/
-Disallow: /admin/
+# Host
+Host: https://www.rahulkhedekar.in
 
+# Sitemaps
 Sitemap: https://www.rahulkhedekar.in/sitemap.xml

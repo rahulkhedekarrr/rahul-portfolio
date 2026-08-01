@@ -1,15 +1,16 @@
 "use client";
 
-import { memo, useRef, useEffect, useState, useMemo } from "react";
+import { memo, useMemo } from "react";
 import Link from "next/link";
-import { m as motion, useInView } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Project } from "../../types";
 
 interface ProjectCardProps {
   project: Project;
+  index?: number;
 }
 
-const ProjectCard = memo(({ project }: ProjectCardProps) => {
+const ProjectCard = memo(({ project, index = 0 }: ProjectCardProps) => {
   const technologyColors = useMemo(
     () => [
       "bg-purple-500/20 text-purple-300",
@@ -21,16 +22,6 @@ const ProjectCard = memo(({ project }: ProjectCardProps) => {
     []
   );
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    if (isInView && !isVisible) {
-      setIsVisible(true);
-    }
-  }, [isInView, isVisible]);
-
   const internalLink =
     project.id === "project-1"
       ? "/projects/lama"
@@ -41,96 +32,53 @@ const ProjectCard = memo(({ project }: ProjectCardProps) => {
       : project.id === "project-ecommerce"
       ? "/projects/ecommerce"
       : undefined;
-  const suppressExternalLinks = false;
 
   const CardShell = (
     <motion.div
-      ref={ref}
-      className="group h-full flex flex-col backdrop-blur-optimized rounded-3xl border border-white/20 shadow-2xl overflow-hidden hover-optimized gpu-accelerated cursor-pointer"
-      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-      animate={
-        isVisible
-          ? { opacity: 1, y: 0, scale: 1 }
-          : { opacity: 0, y: 50, scale: 0.9 }
-      }
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      whileHover={{
-        scale: 1.02,
-        transition: { duration: 0.2, ease: "easeOut" },
-      }}
-      whileTap={{ scale: 0.98 }}
+      className="group h-full flex flex-col backdrop-blur-optimized rounded-3xl border border-white/20 shadow-2xl overflow-hidden hover-optimized cursor-pointer"
+      initial={{ opacity: 0, y: 36 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.08 }}
+      whileHover={{ scale: 1.02, y: -4 }}
+      whileTap={{ scale: 0.985 }}
     >
-      {/* Header without image: gradient strip + initials badge */}
       <div className="relative">
         <div className="h-2 w-full bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500" />
         <div className="px-6 pt-5 pb-0 flex items-center gap-3">
-          <motion.h3
-            className="text-xl font-bold text-white text-optimized"
-            initial={{ opacity: 0, y: 10 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-          >
+          <h3 className="text-xl font-bold text-white text-optimized">
             {project.title}
-          </motion.h3>
+          </h3>
         </div>
       </div>
       <div className="p-6 pt-4 flex-1 flex flex-col">
-        <motion.p
-          className="text-white/80 mb-4 leading-relaxed text-optimized"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-        >
+        <p className="text-white/80 mb-4 leading-relaxed text-optimized">
           {project.description}
-        </motion.p>
+        </p>
         {project.technologies.length > 0 && (
-          <motion.div
-            className="flex flex-wrap gap-2 mb-6"
-            initial={{ opacity: 0 }}
-            animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-          >
+          <div className="flex flex-wrap gap-2 mb-6">
             {project.technologies.map((tech, index) => (
-              <motion.span
-                key={index}
+              <span
+                key={tech}
                 className={`px-3 py-1 ${
                   technologyColors[index % technologyColors.length]
                 } rounded-full text-sm text-optimized`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={
-                  isVisible
-                    ? { opacity: 1, scale: 1 }
-                    : { opacity: 0, scale: 0.8 }
-                }
-                transition={{
-                  duration: 0.3,
-                  ease: "easeOut",
-                  delay: 0.5 + index * 0.1,
-                }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
               >
                 {tech}
-              </motion.span>
+              </span>
             ))}
-          </motion.div>
+          </div>
         )}
         <div className="mt-auto flex items-center justify-between">
           <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent mr-4" />
-          <motion.span
-            className="text-xs tracking-wider uppercase text-white/60"
-            initial={{ opacity: 0 }}
-            animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.4, delay: 0.5 }}
-          >
+          <span className="text-xs tracking-wider uppercase text-white/60 group-hover:text-white/80 transition-colors">
             View details
-          </motion.span>
+          </span>
         </div>
       </div>
     </motion.div>
   );
 
-  // Make whole card clickable: internal route takes priority; then liveUrl; then websiteUrl
   if (internalLink) {
     return (
       <Link
@@ -141,7 +89,7 @@ const ProjectCard = memo(({ project }: ProjectCardProps) => {
       </Link>
     );
   }
-  if (!suppressExternalLinks && project.liveUrl) {
+  if (project.liveUrl) {
     return (
       <a
         href={project.liveUrl}
@@ -153,7 +101,7 @@ const ProjectCard = memo(({ project }: ProjectCardProps) => {
       </a>
     );
   }
-  if (!suppressExternalLinks && project.websiteUrl) {
+  if (project.websiteUrl) {
     return (
       <a
         href={project.websiteUrl}

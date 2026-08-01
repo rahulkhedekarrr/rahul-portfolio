@@ -4,7 +4,12 @@ import { Inter } from "next/font/google";
 import { MotionProvider } from "../components/motion-provider";
 import Script from "next/script";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
+});
 
 export const metadata: Metadata = {
   title: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
@@ -118,22 +123,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <Script
-          id="json-ld"
+        <meta
+          name="google-site-verification"
+          content="mbF5CGhdELXBL-_Lo8TzonZy3XPmtr8qvKBQvxwmVkc"
+        />
+      </head>
+      <body className={inter.className}>
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd),
           }}
         />
-        <meta
-          name="google-site-verification"
-          content="mbF5CGhdELXBL-_Lo8TzonZy3XPmtr8qvKBQvxwmVkc"
-        />
+        <MotionProvider>{children}</MotionProvider>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZVLPLVXNYY"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -141,9 +148,6 @@ export default function RootLayout({
             gtag('config', 'G-ZVLPLVXNYY');
           `}
         </Script>
-      </head>
-      <body className={inter.className}>
-        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

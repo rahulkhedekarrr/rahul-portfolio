@@ -16,8 +16,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeSpeed;
-    /* Prevent layout shifts */
-    overflow-x: hidden;
     /* Enable smooth scrolling on touch devices */
     -webkit-overflow-scrolling: touch;
   }
@@ -165,6 +163,16 @@
   will-change: transform;
 }
 
+/* Pause decorative blobs on small screens / reduced motion (PSI main-thread) */
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .blob-anim-20,
+  .blob-anim-25,
+  .blob-anim-30 {
+    animation: none;
+    will-change: auto;
+  }
+}
+
 .animation-delay-2000 {
   animation-delay: 2s;
 }
@@ -173,13 +181,16 @@
   animation-delay: 4s;
 }
 
-/* Enhanced scrolling behavior (global, with reduced-motion respect) */
+/* Enhanced scrolling behavior (global, with reduced-motion respect)
+   Only clip horizontal overflow on ONE root (html). Setting overflow-x
+   on both html and body makes overflow-y compute to auto on both,
+   which creates a double vertical scrollbar. */
 html {
   scroll-padding-top: 80px;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-  scrollbar-gutter: stable;
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -188,24 +199,25 @@ html {
   }
 }
 
-/* Optimize scroll performance */
+/* Optimize scroll performance — do not set overflow-x here */
 body {
   -webkit-overflow-scrolling: touch;
-  /* Prevent horizontal scroll */
-  overflow-x: hidden;
+  overflow-x: visible;
+  overflow-y: visible;
 }
 
 /* Lenis integration: ensure full-height and no conflicting smooth when active */
-html.lenis {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
 .lenis.lenis-smooth {
-  scroll-behavior: auto;
+  scroll-behavior: auto !important;
 }
 
 .lenis.lenis-stopped {
-  overflow: hidden;
+  overflow: clip;
 }
 
 /* Performance optimizations - moved to @layer base above */

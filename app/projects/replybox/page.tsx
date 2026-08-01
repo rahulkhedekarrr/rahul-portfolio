@@ -120,7 +120,7 @@ export default function ReplyboxProjectPage() {
 
   return (
     <motion.div
-      className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-x-hidden"
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
       variants={container}
       initial="hidden"
       animate="visible"
