@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { m as motion } from "framer-motion";
+import Background from "../../components/layout/Background";
 
 const blogPosts = [
   {
@@ -15,98 +15,125 @@ const blogPosts = [
     slug: "/blog/building-mern-app-nextjs",
   },
   {
-    id: "nextjs-performance-optimization",
-    title: "Next.js Performance Optimization: Core Web Vitals",
+    id: "chrome-mv3-ai-extension-dedupe",
+    title: "Cutting duplicate AI calls in a Chrome MV3 extension",
     excerpt:
-      "Discover essential techniques to optimize your Next.js applications for better Core Web Vitals scores and improved user experience.",
-    date: "2025-09-12",
-    readTime: "6 min read",
-    category: "Next.js",
-    slug: "/blog/nextjs-performance-optimization",
+      "How a Gmail/Outlook side-panel assistant went from 20–25 generation requests per email open to one — with service-worker locks, storage flags, and a gateway that still feels instant.",
+    date: "2025-10-02",
+    readTime: "7 min read",
+    category: "Chrome Extensions",
+    slug: "/blog/chrome-mv3-ai-extension-dedupe",
+    comingSoon: true,
   },
   {
-    id: "react-state-management-best-practices",
-    title: "React State Management: Best Practices for 2024",
+    id: "queue-backed-whatsapp-email-apis",
+    title: "Queue-backed WhatsApp & email APIs that survive real traffic",
     excerpt:
-      "Explore modern state management patterns in React applications, including Context API, Zustand, and Redux Toolkit comparisons.",
-    date: "2025-09-10",
-    readTime: "7 min read",
-    category: "React",
-    slug: "/blog/react-state-management-best-practices",
+      "Design notes from prepaid WhatsApp campaigns and mass mail sends — BullMQ, Redis rate limits, wallet refunds on failure, and keeping Meta/SES happy at ~10 messages/sec.",
+    date: "2025-09-20",
+    readTime: "8 min read",
+    category: "Backend",
+    slug: "/blog/queue-backed-whatsapp-email-apis",
+    comingSoon: true,
   },
 ];
 
 export default function BlogClient() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      <div className="max-w-4xl mx-auto px-6 py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="mb-12">
-            <Link
-              href="/"
-              className="text-white/70 hover:text-white mb-8 inline-block"
-            >
-              ← Back to Home
-            </Link>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              MERN Stack & Next.js Blog
-            </h1>
-            <p className="text-white/80 text-lg md:text-xl max-w-3xl">
-              Insights, tutorials, and best practices for modern web development
-              with MERN stack and Next.js.
-            </p>
-          </div>
+    <div className="relative min-h-screen bg-sharp text-sharp-fg">
+      <Background />
 
-          <div className="space-y-8">
-            {blogPosts.map((post, index) => (
-              <motion.article
-                key={post.id}
-                className="group backdrop-blur-optimized rounded-3xl border border-white/20 shadow-2xl p-8 hover-optimized gpu-accelerated"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-sm">
-                    {post.category}
+      <div className="relative z-10 border-b border-sharp">
+        <div className="mx-auto flex h-14 max-w-4xl items-center justify-between px-4 sm:px-6">
+          <Link
+            href="/"
+            className="font-mono text-xs uppercase tracking-[0.16em] text-sharp-muted transition-colors hover:text-sharp-accent"
+          >
+            ← Back
+          </Link>
+          <span className="font-mono text-xs tracking-[0.2em] text-sharp-fg">
+            RK
+          </span>
+        </div>
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
+        <header className="mb-12 border border-sharp bg-sharp-surface p-6 sm:p-8">
+          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-sharp-accent">
+            Writing // notes
+          </p>
+          <h1 className="mb-4 text-3xl font-bold tracking-tight text-sharp-fg sm:text-5xl">
+            Blog
+          </h1>
+          <p className="max-w-2xl text-base leading-relaxed text-sharp-muted sm:text-lg">
+            Practical notes on Next.js, Chrome MV3, AI productization, and
+            queue-backed messaging systems.
+          </p>
+        </header>
+
+        <div className="space-y-4">
+          {blogPosts.map((post) => {
+            const content = (
+              <>
+                <div className="mb-4 flex flex-wrap items-center gap-3">
+                  <span className="chip">{post.category}</span>
+                  <span className="font-mono text-[11px] text-sharp-muted">
+                    {post.readTime}
                   </span>
-                  <span className="text-white/60 text-sm">{post.readTime}</span>
+                  {post.comingSoon ? (
+                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-sharp-accent">
+                      Coming soon
+                    </span>
+                  ) : null}
                 </div>
 
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-purple-200 transition-colors">
-                  <Link href={post.slug} className="hover:underline">
-                    {post.title}
-                  </Link>
+                <h2 className="mb-3 text-xl font-semibold tracking-tight text-sharp-fg transition-colors group-hover:text-sharp-accent sm:text-2xl">
+                  {post.title}
                 </h2>
 
-                <p className="text-white/80 mb-6 leading-relaxed">
+                <p className="mb-6 text-sm leading-relaxed text-sharp-muted sm:text-base">
                   {post.excerpt}
                 </p>
 
-                <div className="flex items-center justify-between">
-                  <time className="text-white/60 text-sm">
+                <div className="flex items-center justify-between gap-4">
+                  <time className="font-mono text-[11px] text-sharp-muted">
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
                     })}
                   </time>
-                  <Link
-                    href={post.slug}
-                    className="text-purple-400 hover:text-purple-300 font-medium group-hover:underline"
-                  >
-                    Read more →
-                  </Link>
+                  {!post.comingSoon ? (
+                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-sharp-accent">
+                      Read →
+                    </span>
+                  ) : null}
                 </div>
-              </motion.article>
-            ))}
-          </div>
-        </motion.div>
+              </>
+            );
+
+            if (post.comingSoon) {
+              return (
+                <article
+                  key={post.id}
+                  className="border border-sharp bg-sharp-surface p-6 opacity-70 sm:p-8"
+                >
+                  {content}
+                </article>
+              );
+            }
+
+            return (
+              <Link
+                key={post.id}
+                href={post.slug}
+                className="group block border border-sharp bg-sharp-surface p-6 transition-colors hover:border-[var(--sharp-border-strong)] sm:p-8"
+              >
+                <article>{content}</article>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

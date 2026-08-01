@@ -252,10 +252,11 @@ html {
   }
 }
 
+html,
 body {
   -webkit-overflow-scrolling: touch;
-  overflow-x: visible;
-  overflow-y: visible;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 html.lenis,
@@ -281,33 +282,41 @@ html.lenis body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Scrollbar — lime on near-black */
+/* Scrollbar — neutral (accent green reads as a screen-edge line on mobile) */
 html {
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--sharp-accent) 75%, transparent)
-    rgba(10, 10, 10, 0.9);
+  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
 }
 
 html::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
+  height: 8px;
   background: transparent;
 }
 
 html::-webkit-scrollbar-track {
-  background: rgba(10, 10, 10, 0.9);
+  background: transparent;
 }
 
 html::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--sharp-accent) 80%, #0a0a0a);
+  background: rgba(255, 255, 255, 0.22);
   border-radius: 2px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
 }
 
 html::-webkit-scrollbar-thumb:hover {
-  background: var(--sharp-accent);
-  border: 2px solid transparent;
-  background-clip: padding-box;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+@media (max-width: 768px) {
+  html {
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

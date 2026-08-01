@@ -18,7 +18,7 @@ const CaseStudyShell = ({
   children,
 }: CaseStudyShellProps) => {
   return (
-    <div className="relative min-h-screen bg-sharp text-sharp-fg">
+    <div className="relative min-h-screen overflow-x-clip bg-sharp text-sharp-fg">
       <Background />
 
       <div className="relative z-10 border-b border-sharp">
@@ -59,7 +59,7 @@ const CaseStudyShell = ({
           </nav>
         </aside>
 
-        <main>{children}</main>
+        <main className="min-w-0">{children}</main>
       </div>
     </div>
   );
