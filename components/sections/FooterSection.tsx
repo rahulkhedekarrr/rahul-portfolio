@@ -1,31 +1,26 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-
 const FooterSection = () => {
   return (
-    <motion.footer
-      className="relative z-10 px-6 py-8 smooth-scroll"
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-    >
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          className="backdrop-blur-optimized rounded-2xl border border-white/20 shadow-xl p-6"
-          whileHover={{ scale: 1.01 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+    <footer className="relative z-10 border-t border-sharp px-4 py-8 sm:px-6">
+      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+        <p className="font-mono text-xs tracking-wide text-sharp-muted">
+          © {new Date().getFullYear()} Rahul Khedekar
+        </p>
+        <nav
+          aria-label="Footer"
+          className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-[0.16em] text-sharp-muted"
         >
-          <div className="text-center">
-            <p className="text-white/80 text-optimized">
-              © 2025 Rahul Khedekar. Built with precision and powered by
-              innovation.
-            </p>
-          </div>
-        </motion.div>
+          <a href="#projects" className="transition-colors hover:text-sharp-accent">
+            Projects
+          </a>
+          <a href="/blog" className="transition-colors hover:text-sharp-accent">
+            Blog
+          </a>
+          <a href="#contact" className="transition-colors hover:text-sharp-accent">
+            Contact
+          </a>
+        </nav>
       </div>
-    </motion.footer>
+    </footer>
   );
 };
 

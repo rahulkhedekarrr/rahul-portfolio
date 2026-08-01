@@ -1,7 +1,8 @@
 "use client";
 
-import { memo, useMemo } from "react";
+import { memo, useCallback, useRef, type MouseEvent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { m as motion } from "framer-motion";
 import { Project } from "../../types";
 
@@ -11,68 +12,77 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = memo(({ project, index = 0 }: ProjectCardProps) => {
-  const technologyColors = useMemo(
-    () => [
-      "bg-purple-500/20 text-purple-300",
-      "bg-cyan-500/20 text-cyan-300",
-      "bg-green-500/20 text-green-300",
-      "bg-pink-500/20 text-pink-300",
-      "bg-orange-500/20 text-orange-300",
-    ],
-    []
-  );
+  const cardRef = useRef<HTMLDivElement>(null);
+  const internalLink = project.slug;
 
-  const internalLink =
-    project.id === "project-1"
-      ? "/projects/lama"
-      : project.id === "project-replybox"
-      ? "/projects/replybox"
-      : project.id === "project-canteen"
-      ? "/projects/canteen"
-      : project.id === "project-ecommerce"
-      ? "/projects/ecommerce"
-      : undefined;
+  const handlePointerMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--spot-x", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--spot-y", `${e.clientY - rect.top}px`);
+  }, []);
+
+  const hasValidImage =
+    Boolean(project.image) &&
+    project.image !== "+" &&
+    project.image.startsWith("/");
 
   const CardShell = (
     <motion.div
-      className="group h-full flex flex-col backdrop-blur-optimized rounded-3xl border border-white/20 shadow-2xl overflow-hidden hover-optimized cursor-pointer"
-      initial={{ opacity: 0, y: 36 }}
+      ref={cardRef}
+      onMouseMove={handlePointerMove}
+      className="spotlight-card group flex h-full flex-col border border-sharp bg-sharp-surface transition-colors duration-200 hover:border-sharp-accent"
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.08 }}
-      whileHover={{ scale: 1.02, y: -4 }}
-      whileTap={{ scale: 0.985 }}
+      transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.07 }}
     >
-      <div className="relative">
-        <div className="h-2 w-full bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500" />
-        <div className="px-6 pt-5 pb-0 flex items-center gap-3">
-          <h3 className="text-xl font-bold text-white text-optimized">
-            {project.title}
-          </h3>
-        </div>
+      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-sharp bg-sharp">
+        {hasValidImage ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          />
+        ) : (
+          <div className="tech-grid absolute inset-0 flex items-end p-4">
+            <span className="font-mono text-xs uppercase tracking-[0.18em] text-sharp-accent">
+              {project.title.split(" ")[0]}
+            </span>
+          </div>
+        )}
       </div>
-      <div className="p-6 pt-4 flex-1 flex flex-col">
-        <p className="text-white/80 mb-4 leading-relaxed text-optimized">
+
+      <div className="relative z-[1] flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="mb-2 text-lg font-semibold leading-snug text-sharp-fg sm:text-xl">
+          {project.title}
+        </h3>
+        {project.outcome ? (
+          <p className="mb-3 font-mono text-[11px] leading-relaxed tracking-wide text-sharp-accent sm:text-xs">
+            {project.outcome}
+          </p>
+        ) : null}
+        <p className="mb-4 flex-1 text-sm leading-relaxed text-sharp-muted">
           {project.description}
         </p>
         {project.technologies.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-6">
-            {project.technologies.map((tech, index) => (
-              <span
-                key={tech}
-                className={`px-3 py-1 ${
-                  technologyColors[index % technologyColors.length]
-                } rounded-full text-sm text-optimized`}
-              >
+          <div className="mb-5 flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <span key={tech} className="chip">
                 {tech}
               </span>
             ))}
           </div>
         )}
-        <div className="mt-auto flex items-center justify-between">
-          <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent mr-4" />
-          <span className="text-xs tracking-wider uppercase text-white/60 group-hover:text-white/80 transition-colors">
-            View details
+        <div className="mt-auto flex items-center justify-between border-t border-sharp pt-4">
+          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-sharp-muted transition-colors group-hover:text-sharp-accent">
+            View case →
+          </span>
+          <span className="font-mono text-[10px] text-sharp-muted">
+            {String(index + 1).padStart(2, "0")}
           </span>
         </div>
       </div>
@@ -83,7 +93,7 @@ const ProjectCard = memo(({ project, index = 0 }: ProjectCardProps) => {
     return (
       <Link
         href={internalLink}
-        className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-3xl"
+        className="block h-full rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-sharp-accent"
       >
         {CardShell}
       </Link>
@@ -95,7 +105,7 @@ const ProjectCard = memo(({ project, index = 0 }: ProjectCardProps) => {
         href={project.liveUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="block h-full rounded-3xl"
+        className="block h-full"
       >
         {CardShell}
       </a>
@@ -107,7 +117,7 @@ const ProjectCard = memo(({ project, index = 0 }: ProjectCardProps) => {
         href={project.websiteUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="block h-full rounded-3xl"
+        className="block h-full"
       >
         {CardShell}
       </a>

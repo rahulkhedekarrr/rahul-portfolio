@@ -1,15 +1,35 @@
-"use client";
-
-import { m as motion, type Variants, useReducedMotion } from "framer-motion";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import CaseStudyShell from "../../../components/case-study/CaseStudyShell";
+import SectionLabel from "../../../components/case-study/SectionLabel";
+import { createPageMetadata } from "../../../lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Lama Gaming OS — Telegram Mini App",
+  description:
+    "Telegram-native gamified platform with Mini App, admin panel, TonConnect, and 1.7k+ users — built with Next.js, Node.js, and MongoDB.",
+  path: "/projects/lama",
+});
+
+const navItems = [
+  { id: "overview", label: "Overview" },
+  { id: "architecture", label: "Architecture" },
+  { id: "media", label: "Product" },
+  { id: "features", label: "Features" },
+  { id: "tech", label: "Tech" },
+];
 
 const sections = [
   {
-    title: "Lama Gaming Ecosystem – Telegram Mini App & Admin Panel",
+    id: "overview",
+    index: "01",
+    title: "Overview",
     body: "Lama Gaming Ecosystem is a complete end-to-end solution built for engagement, growth, and automation within Telegram. It combines a feature-rich Telegram Mini App for users with a powerful Admin Panel for management, creating a scalable and secure ecosystem tailored to gamified rewards, referral campaigns, and Web3 integration.",
   },
   {
+    id: "architecture",
+    index: "02",
     title: "Architecture",
     body: "Designed with a modern React/Next.js frontend, backed by a Node.js, Express, and MongoDB architecture, and complemented by a Next.js and TypeScript-powered Admin Panel, the project demonstrates how seamless user experiences can coexist with enterprise-level control and analytics.",
   },
@@ -48,15 +68,6 @@ const featureGroups = [
       "Security & Scalability: Environment-based API security, optimized image loading, and modular design for future growth.",
     ],
   },
-  {
-    heading: "Technologies Across the Ecosystem",
-    items: [
-      "Frontend: React, Next.js, Redux Toolkit, Framer Motion, Axios, SweetAlert2",
-      "Backend: Node.js, Express, MongoDB, Mongoose, JWT, Telegram Bot API, Cloudinary",
-      "Admin Panel: Next.js, TypeScript, Tailwind CSS, Axios, SweetAlert2",
-      "Web3 & SDKs: Ton Blockchain, TonConnect, Telegram WebApp SDK, Adsgram SDK",
-    ],
-  },
 ];
 
 const highlights = [
@@ -68,10 +79,10 @@ const highlights = [
 ];
 
 const stats = [
-  { label: "Users onboarded", value: "100k+" },
-  { label: "Avg. session", value: "4.2m" },
-  { label: "Tasks completed", value: "2M+" },
-  { label: "Uptime", value: "99.9%" },
+  { label: "Users onboarded", value: "1.7k+" },
+  { label: "Surfaces", value: "Mini App + Admin" },
+  { label: "Stack", value: "MERN + Next" },
+  { label: "Status", value: "Live" },
 ];
 
 const techBadges = [
@@ -88,260 +99,25 @@ const techBadges = [
 ];
 
 export default function LamaProjectPage() {
-  const reduceMotion = useReducedMotion();
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08, when: "beforeChildren" },
-    },
-  };
-
-  const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
   return (
-    <motion.div
-      className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
-      variants={container}
-      initial="hidden"
-      animate="visible"
-    >
-      <motion.section
-        className="relative z-10 px-6 py-16"
-        variants={fadeUp}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <Link href="/" className="text-white/70 hover:text-white">
-              ← Back
-            </Link>
-          </div>
-
-          {/* Hero with optimized image */}
-          <motion.div
-            className="group backdrop-blur-optimized elevated-surface rounded-3xl border border-white/20 shadow-2xl p-8 md:p-12 mb-10 gpu-accelerated hover-optimized"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            whileHover={reduceMotion ? undefined : {
-              scale: 1.01,
-              transition: { duration: 0.2, ease: "easeOut" },
-            }}
-          >
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <motion.h1
-                  className="text-4xl md:text-6xl font-bold text-white mb-4 text-optimized"
-                  variants={fadeUp}
-                >
-                  Lama Gaming Ecosystem
-                </motion.h1>
-                <motion.p
-                  className="text-white/80 text-lg md:text-xl max-w-3xl text-optimized"
-                  variants={fadeUp}
-                >
-                  Telegram Mini App & Admin Panel
-                </motion.p>
-                <div className="mt-6 flex flex-wrap gap-4">
-                  <Link
-                    href="https://t.me/lama_gaming_bot/lama_gaming_bot?startapp=728420160"
-                    className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-medium hover-float hover-press"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Open Telegram App
-                  </Link>
-                  <Link
-                    href="https://www.lamagamingapp.com/"
-                    className="inline-block px-6 py-3 rounded-xl backdrop-blur-optimized elevated-surface border border-white/20 text-white font-medium hover-float hover-press"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Website
-                  </Link>
-                </div>
-              </div>
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl ">
-              <div className="absolute inset-0 bg-white/30" />
-                <Image
-                  src="/images/lama.png"
-                  alt="Lama Gaming preview"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Stats */}
-          {/* <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {stats.map((s) => (
-              <motion.div
-                key={s.label}
-                className="backdrop-blur-optimized elevated-surface rounded-2xl border border-white/15 p-4 text-center"
-                variants={fadeUp}
-                whileHover={reduceMotion ? undefined : { scale: 1.02 }}
-              >
-                <div className="text-2xl md:text-3xl font-bold text-white text-optimized">{s.value}</div>
-                <div className="text-white/70 text-sm md:text-base text-optimized">{s.label}</div>
-              </motion.div>
-            ))}
-          </motion.div> */}
-
-          {sections.map((s, idx) => (
-            <motion.div
-              key={idx}
-              className="group backdrop-blur-optimized elevated-surface rounded-3xl border border-white/20 shadow-2xl p-8 md:p-10 mb-8 gpu-accelerated hover-optimized"
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              whileHover={{
-                scale: 1.02,
-                transition: { duration: 0.2, ease: "easeOut" },
-              }}
-            >
-              <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4 text-optimized">
-                {s.title}
-              </h2>
-              <p className="text-white/80 text-optimized">{s.body}</p>
-            </motion.div>
-          ))}
-
-          {featureGroups.map((group) => (
-            <motion.div
-              key={group.heading}
-              className="group backdrop-blur-optimized elevated-surface rounded-3xl border border-white/20 shadow-2xl p-8 md:p-10 mb-8 gpu-accelerated hover-optimized"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.25 }}
-              whileHover={reduceMotion ? undefined : {
-                scale: 1.02,
-                transition: { duration: 0.2, ease: "easeOut" },
-              }}
-            >
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4 text-optimized">
-                {group.heading}
-              </h3>
-              <ul className="list-disc pl-5 space-y-2">
-                {group.items.map((item) => (
-                  <motion.li
-                    key={item}
-                    className="text-white/80 text-optimized"
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                  >
-                    {item}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-
-          {/* Technology badges strip */}
-          <motion.div
-            className="group backdrop-blur-optimized elevated-surface rounded-3xl border border-white/20 shadow-2xl p-6 md:p-8 mb-8 gpu-accelerated hover-optimized"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            whileHover={reduceMotion ? undefined : { scale: 1.01 }}
-          >
-            <h3 className="text-xl md:text-2xl font-semibold text-white mb-4 text-optimized">Tech Stack Highlights</h3>
-            <div className="flex flex-wrap gap-2">
-              {techBadges.map((t) => (
-                <span
-                  key={t}
-                  className="px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/90 text-sm"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="group backdrop-blur-optimized elevated-surface rounded-3xl border border-white/20 shadow-2xl p-8 md:p-10 mb-8 gpu-accelerated hover-optimized"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            whileHover={reduceMotion ? undefined : {
-              scale: 1.02,
-              transition: { duration: 0.2, ease: "easeOut" },
-            }}
-          >
-            <h3 className="text-xl md:text-2xl font-semibold text-white mb-4 text-optimized">
-              Why This Project Stands Out
-            </h3>
-            <ul className="list-disc pl-5 space-y-2">
-              {highlights.map((h) => (
-                <motion.li
-                  key={h}
-                  className="text-white/80 text-optimized"
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.25 }}
-                >
-                  {h}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Testimonial */}
-          <motion.div
-            className="group backdrop-blur-optimized elevated-surface rounded-3xl border border-white/20 shadow-2xl p-8 md:p-10 mb-8 gpu-accelerated hover-optimized"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            whileHover={reduceMotion ? undefined : { scale: 1.01 }}
-          >
-            <div className="md:flex md:items-center md:gap-6">
-              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-white/20">
-                <Image src="/images/lama.png" alt="Lama brand" fill className="object-cover" sizes="64px" />
-              </div>
-              <blockquote className="mt-4 md:mt-0 text-white/90 text-lg leading-relaxed">
-                “This ecosystem delivered measurable growth with a seamless Telegram-native UX. The admin suite gave us full control without engineering bottlenecks.”
-              </blockquote>
-            </div>
-            <div className="mt-4 text-white/60 text-sm">Founder, Lama Gaming</div>
-          </motion.div>
-
-          <motion.div
-            className="text-center pb-10"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <div className="flex flex-wrap items-center justify-center gap-4">
+    <CaseStudyShell navItems={navItems}>
+      {/* Hero */}
+      <section className="mb-14 border border-sharp bg-sharp-surface">
+        <div className="grid items-stretch md:grid-cols-2">
+          <div className="flex flex-col justify-center border-b border-sharp p-6 sm:p-8 md:border-b-0 md:border-r">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-sharp-accent">
+              Case study // 05
+            </p>
+            <h1 className="mb-3 text-3xl font-bold tracking-tight text-sharp-fg sm:text-4xl md:text-5xl">
+              Lama Gaming Ecosystem
+            </h1>
+            <p className="mb-6 text-sharp-muted">
+              Telegram Mini App & Admin Panel
+            </p>
+            <div className="flex flex-wrap gap-3">
               <Link
                 href="https://t.me/lama_gaming_bot/lama_gaming_bot?startapp=728420160"
-                className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-medium hover-float hover-press"
+                className="btn-sharp btn-sharp-primary"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -349,22 +125,149 @@ export default function LamaProjectPage() {
               </Link>
               <Link
                 href="https://www.lamagamingapp.com/"
-                className="inline-block px-6 py-3 rounded-xl backdrop-blur-optimized elevated-surface border border-white/20 text-white font-medium hover-float hover-press"
+                className="btn-sharp btn-sharp-outline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Website
               </Link>
-              <Link
-                href="/"
-                className="inline-block px-6 py-3 rounded-xl backdrop-blur-optimized elevated-surface border border-white/20 text-white font-medium hover-float hover-press"
-              >
-                Back to Home
-              </Link>
             </div>
-          </motion.div>
+          </div>
+          <div className="relative aspect-[16/10] min-h-[220px] w-full md:aspect-auto md:min-h-full">
+            <Image
+              src="/images/lama.png"
+              alt="Lama Gaming preview"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+              className="object-cover"
+            />
+          </div>
         </div>
-      </motion.section>
-    </motion.div>
+
+        <div className="grid grid-cols-2 border-t border-sharp md:grid-cols-4">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className={`px-4 py-5 sm:px-5 ${
+                i < stats.length - 1 ? "border-r border-sharp" : ""
+              } ${i === 1 ? "md:border-r" : ""} ${
+                i < 2 ? "border-b border-sharp md:border-b-0" : ""
+              }`}
+            >
+              <div className="text-xl font-bold text-sharp-fg sm:text-2xl">
+                {s.value}
+              </div>
+              <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-sharp-muted">
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Overview + Architecture */}
+      {sections.map((s) => (
+        <section key={s.id} id={s.id} className="mb-12 scroll-mt-24">
+          <SectionLabel index={s.index} title={s.title} />
+          <p className="max-w-3xl leading-relaxed text-sharp-muted">{s.body}</p>
+        </section>
+      ))}
+
+      {/* Product media */}
+      <section id="media" className="mb-12 scroll-mt-24">
+        <SectionLabel index="03" title="Product" />
+        <div className="relative aspect-[16/9] w-full overflow-hidden border border-sharp bg-sharp">
+          <Image
+            src="/images/lama.png"
+            alt="Lama product surface"
+            fill
+            sizes="(max-width: 768px) 100vw, 800px"
+            className="object-cover"
+          />
+        </div>
+      </section>
+
+      {/* Features */}
+      <section id="features" className="mb-12 scroll-mt-24">
+        <SectionLabel index="04" title="Features" />
+        <div className="space-y-4">
+          {featureGroups.map((group) => (
+            <div
+              key={group.heading}
+              className="border border-sharp bg-sharp-surface p-5 sm:p-6"
+            >
+              <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-sharp-accent">
+                {group.heading}
+              </h3>
+              <ul className="space-y-2">
+                {group.items.map((item) => (
+                  <li
+                    key={item}
+                    className="border-l border-sharp pl-4 text-sm leading-relaxed text-sharp-muted"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Tech */}
+      <section id="tech" className="mb-12 scroll-mt-24">
+        <SectionLabel index="05" title="Tech stack" />
+        <div className="mb-8 flex flex-wrap gap-2">
+          {techBadges.map((t) => (
+            <span key={t} className="chip">
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <div className="border border-sharp bg-sharp-surface p-5 sm:p-6">
+          <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-sharp-accent">
+            Why it stands out
+          </h3>
+          <ul className="space-y-2">
+            {highlights.map((h) => (
+              <li
+                key={h}
+                className="border-l border-sharp pl-4 text-sm leading-relaxed text-sharp-muted"
+              >
+                {h}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Next */}
+      <section className="border border-sharp bg-sharp-surface p-6 sm:p-8">
+        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-sharp-muted">
+          Next
+        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            href="https://t.me/lama_gaming_bot/lama_gaming_bot?startapp=728420160"
+            className="btn-sharp btn-sharp-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open Telegram App
+          </Link>
+          <Link
+            href="/projects/ai-learning-platform"
+            className="btn-sharp btn-sharp-outline"
+          >
+            Next project →
+          </Link>
+          <Link href="/" className="btn-sharp btn-sharp-outline">
+            Home
+          </Link>
+        </div>
+      </section>
+    </CaseStudyShell>
   );
 }

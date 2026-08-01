@@ -1,23 +1,25 @@
-import { AboutItem } from '../types';
+import { AboutItem } from "../types";
 
 export const aboutItems: AboutItem[] = [
   {
     id: "experience",
     title: "Experience",
-    description: "Building scalable web applications with modern technologies",
-    borderColor: "border-purple-400",
+    description:
+      "Shipping AI-assisted product UIs and queue-backed messaging services for real product teams",
+    borderColor: "border-sharp-accent",
   },
   {
     id: "specialization",
     title: "Specialization",
-    description: "MERN Stack Development (MongoDB, Express.js, React, Node.js)",
-    borderColor: "border-cyan-400",
+    description:
+      "Next.js product engineering paired with Node/Express platforms, Redis workers, and MongoDB",
+    borderColor: "border-sharp-accent",
   },
   {
     id: "focus",
     title: "Focus",
     description:
-      "Creating responsive, performant, and user-centric applications",
-    borderColor: "border-pink-400",
+      "Reliability under load — dedupe, wallets, rate limits, multi-role systems, and production ops",
+    borderColor: "border-sharp-accent",
   },
 ];

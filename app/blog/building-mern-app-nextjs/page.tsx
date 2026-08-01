@@ -1,26 +1,29 @@
 import { Metadata } from "next";
 import BlogPostClient from "./BlogPostClient";
+import { createPageMetadata, OG_IMAGE, SITE_URL } from "../../../lib/seo";
+
+const title = "Building a MERN App with Next.js";
+const description =
+  "Learn how to build a full-stack MERN application using Next.js — setup, development, and deployment.";
+const path = "/blog/building-mern-app-nextjs";
 
 export const metadata: Metadata = {
-  title: "Building a MERN App with Next.js: Complete Guide | Rahul Khedekar",
-  description: "Learn how to build a full-stack MERN application using Next.js as the frontend framework. Complete guide covering setup, development, and deployment.",
-  keywords: [
-    "MERN stack tutorial",
-    "Next.js MERN app",
-    "MongoDB Express React Node.js",
-    "Full stack development",
-    "Next.js backend integration",
-    "MERN stack guide",
-    "React Next.js tutorial",
-    "Node.js Express API",
-  ],
+  ...createPageMetadata({ title, description, path, type: "article" }),
   openGraph: {
-    title: "Building a MERN App with Next.js: Complete Guide",
-    description: "Learn how to build a full-stack MERN application using Next.js as the frontend framework. Complete guide covering setup, development, and deployment.",
-    url: "https://www.rahulkhedekar.in/blog/building-mern-app-nextjs",
+    title,
+    description,
+    url: `${SITE_URL}${path}`,
     type: "article",
     publishedTime: "2024-01-15T00:00:00.000Z",
     authors: ["Rahul Khedekar"],
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: title,
+      },
+    ],
   },
 };
 

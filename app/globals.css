@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Critical CSS optimizations */
 @layer base {
   * {
     box-sizing: border-box;
@@ -16,74 +15,55 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeSpeed;
-    /* Enable smooth scrolling on touch devices */
     -webkit-overflow-scrolling: touch;
   }
 }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Hero LCP text: paint with system fonts immediately */
+.lcp-text {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root {
+  --sharp-bg: #0a0a0a;
+  --sharp-fg: #f5f5f5;
+  --sharp-muted: #a3a3a3;
+  --sharp-accent: #c8f53c;
+  --sharp-accent-fg: #0a0a0a;
+  --sharp-border: rgba(255, 255, 255, 0.12);
+  --sharp-border-strong: rgba(255, 255, 255, 0.22);
+  --sharp-grid: rgba(255, 255, 255, 0.045);
+  --sharp-surface: #111111;
+  --sharp-surface-2: #161616;
+  --foreground-rgb: 245, 245, 245;
+  --background-start-rgb: 10, 10, 10;
+  --background-end-rgb: 10, 10, 10;
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-  }
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 72 90% 60%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 72 90% 60%;
+    --accent-foreground: 0 0% 4%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 72 90% 60%;
+    --radius: 0.25rem;
+    --chart-1: 72 90% 60%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
@@ -96,95 +76,168 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--sharp-bg);
+    color: var(--sharp-fg);
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--sharp-accent) 35%, transparent);
+    color: var(--sharp-fg);
   }
 }
 
-/* Custom animations */
-@keyframes pulse {
-  0%,
-  100% {
+/* Sharp technical utilities */
+@layer utilities {
+  .font-mono-tech {
+    font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+      Consolas, monospace;
+  }
+
+  .bg-sharp {
+    background-color: var(--sharp-bg);
+  }
+
+  .text-sharp-muted {
+    color: var(--sharp-muted);
+  }
+
+  .text-sharp-accent {
+    color: var(--sharp-accent);
+  }
+
+  .border-sharp {
+    border-color: var(--sharp-border);
+  }
+
+  .bg-sharp-surface {
+    background-color: var(--sharp-surface);
+  }
+
+  .bg-sharp-accent {
+    background-color: var(--sharp-accent);
+    color: var(--sharp-accent-fg);
+  }
+
+  .tech-grid {
+    background-color: var(--sharp-bg);
+    background-image: linear-gradient(var(--sharp-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--sharp-grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: center top;
+  }
+
+  .tech-grid-fade {
+    mask-image: radial-gradient(
+      ellipse 80% 70% at 50% 30%,
+      black 20%,
+      transparent 75%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 70% at 50% 30%,
+      black 20%,
+      transparent 75%
+    );
+  }
+
+  .section-rule {
+    height: 1px;
+    width: 3rem;
+    background: var(--sharp-accent);
+  }
+
+  .chip {
+    @apply inline-flex items-center px-2.5 py-1 text-xs tracking-wide border;
+    border-color: var(--sharp-border);
+    background: var(--sharp-surface);
+    color: var(--sharp-muted);
+    border-radius: 2px;
+    font-family: var(--font-mono), ui-monospace, monospace;
+  }
+
+  .btn-sharp {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold tracking-wide transition-colors;
+    border-radius: 2px;
+  }
+
+  .btn-sharp:focus-visible {
+    outline: 2px solid var(--sharp-accent);
+    outline-offset: 2px;
+  }
+
+  .btn-sharp-primary {
+    background: var(--sharp-accent);
+    color: var(--sharp-accent-fg);
+  }
+
+  .btn-sharp-primary:hover {
+    filter: brightness(1.08);
+  }
+
+  .btn-sharp-outline {
+    border: 1px solid var(--sharp-border-strong);
+    color: var(--sharp-fg);
+    background: transparent;
+  }
+
+  .btn-sharp-outline:hover {
+    border-color: var(--sharp-accent);
+    color: var(--sharp-accent);
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--sharp-accent);
+    outline-offset: 2px;
+  }
+
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .spotlight-card::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    background: radial-gradient(
+      420px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      color-mix(in srgb, var(--sharp-accent) 18%, transparent),
+      transparent 45%
+    );
+    z-index: 0;
+  }
+
+  .spotlight-card:hover::before,
+  .spotlight-card:focus-within::before {
     opacity: 1;
   }
-  50% {
-    opacity: 0.5;
-  }
-}
 
-/* Background blob animations moved to CSS for compositor efficiency */
-@keyframes blobA {
-  0% {
-    transform: rotate(0deg) scale(1);
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
   }
-  50% {
-    transform: rotate(180deg) scale(1.1);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}
 
-@keyframes blobB {
-  0% {
-    transform: rotate(360deg) scale(1.1);
+  .paint-optimized {
+    contain: layout style paint;
+    transform: translateZ(0);
   }
-  50% {
-    transform: rotate(180deg) scale(1);
-  }
-  100% {
-    transform: rotate(0deg) scale(1.1);
-  }
-}
 
-@keyframes blobC {
-  0% {
-    transform: rotate(0deg) scale(1);
+  .text-optimized {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  50% {
-    transform: rotate(-180deg) scale(1.2);
-  }
-  100% {
-    transform: rotate(-360deg) scale(1);
-  }
-}
 
-.blob-anim-20 {
-  animation: blobA 20s linear infinite;
-  will-change: transform;
-}
-
-.blob-anim-25 {
-  animation: blobB 25s linear infinite;
-  will-change: transform;
-}
-
-.blob-anim-30 {
-  animation: blobC 30s linear infinite;
-  will-change: transform;
-}
-
-/* Pause decorative blobs on small screens / reduced motion (PSI main-thread) */
-@media (max-width: 768px), (prefers-reduced-motion: reduce) {
-  .blob-anim-20,
-  .blob-anim-25,
-  .blob-anim-30 {
-    animation: none;
+  .layout-stable {
+    contain: layout;
     will-change: auto;
   }
 }
 
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-/* Enhanced scrolling behavior (global, with reduced-motion respect)
-   Only clip horizontal overflow on ONE root (html). Setting overflow-x
-   on both html and body makes overflow-y compute to auto on both,
-   which creates a double vertical scrollbar. */
+/* Scrolling */
 html {
   scroll-padding-top: 80px;
   -webkit-overflow-scrolling: touch;
@@ -199,14 +252,12 @@ html {
   }
 }
 
-/* Optimize scroll performance — do not set overflow-x here */
 body {
   -webkit-overflow-scrolling: touch;
   overflow-x: visible;
   overflow-y: visible;
 }
 
-/* Lenis integration: ensure full-height and no conflicting smooth when active */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -220,290 +271,45 @@ html.lenis body {
   overflow: clip;
 }
 
-/* Performance optimizations - moved to @layer base above */
-
-/* Performance optimizations */
-.smooth-scroll {
-  will-change: transform;
-}
-
-/* Optimized backdrop blur - minimal for performance */
-.backdrop-blur-optimized {
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Hardware accelerated animations */
-.animate-smooth {
-  animation-fill-mode: both;
-  -webkit-animation-fill-mode: both;
-}
-
-/* Optimize hover effects - minimal for performance */
-.hover-optimized {
-  transition: transform 160ms cubic-bezier(0.2, 0.7, 0.2, 1),
-    box-shadow 200ms ease-out, background-color 200ms ease-out;
-  will-change: transform;
-}
-
-.hover-optimized:hover {
-  transform: scale(1.02);
-}
-
-/* Glass morphism effects */
-.glass {
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.125);
-}
-
-/* Custom hover effects */
-.hover-glow:hover {
-  box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
-}
-
-/* New GPU-friendly hover utilities */
-.hover-float {
-  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-
-.hover-float:hover {
-  transform: translate3d(0, -2px, 0) scale(1.02);
-}
-
-.hover-press:active {
-  transform: translate3d(0, 0, 0) scale(0.98);
-}
-
-.hover-glow-soft:hover {
-  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.15),
-    0 6px 14px rgba(6, 182, 212, 0.12);
-}
-
-.elevated-surface {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.04)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.frosted {
-  backdrop-filter: blur(10px) saturate(140%);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-}
-
-.gradient-accent {
-  background-image: linear-gradient(
-    135deg,
-    rgba(139, 92, 246, 0.25),
-    rgba(34, 211, 238, 0.25)
-  );
-}
-
-/* Mobile navigation adjustments */
-@media (max-width: 768px) {
-  .mobile-nav {
-    display: none;
-  }
-}
-
-/* Enhanced mobile responsiveness */
-@media (max-width: 640px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  /* Reduce padding on mobile for better space utilization */
-  .section-padding {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-  
-  /* Better text sizing for mobile */
-  .hero-title {
-    font-size: 2.5rem;
-    line-height: 1.1;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.125rem;
-    line-height: 1.5;
-  }
-}
-
-/* Additional performance optimizations */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* Optimize for 60fps scrolling */
-.scroll-container {
-  contain: layout style paint;
-  transform: translateZ(0);
-}
-
-/* Reduce paint complexity */
-.gradient-bg {
-  background-attachment: fixed;
-}
-
-/* Optimize text rendering */
-.text-optimized {
-  text-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Avoid forcing compositing on every element */
-
-/* Reduce repaints during scroll */
 .smooth-scroll {
   contain: layout style paint;
   will-change: auto;
 }
 
-/* Optimize backdrop filters for better performance */
-@media (prefers-reduced-motion: no-preference) {
-  .backdrop-blur-optimized {
-    will-change: backdrop-filter;
-  }
-}
-
-/* Disable backdrop blur on low-end devices */
-@media (max-width: 768px) {
-  .backdrop-blur-optimized {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* Advanced performance optimizations */
-@layer utilities {
-  /* GPU acceleration for all interactive elements */
-  .gpu-accelerated {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    will-change: transform;
-  }
-
-  /* Optimize for 60fps animations */
-  .smooth-animation {
-    animation-fill-mode: both;
-    -webkit-animation-fill-mode: both;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  /* Reduce paint complexity */
-  .paint-optimized {
-    contain: layout style paint;
-    transform: translateZ(0);
-  }
-
-  /* Optimize text rendering */
-  .text-optimized {
-    text-rendering: optimizeSpeed;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Prevent layout thrashing */
-  .layout-stable {
-    contain: layout;
-    will-change: auto;
-  }
-}
-
-/* Critical performance fixes */
-* {
-  /* Prevent subpixel rendering issues */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Optimize scroll performance */
 .scroll-container {
   contain: layout style paint;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Reduce repaints during scroll */
-.smooth-scroll {
-  contain: layout style paint;
-  will-change: auto;
-}
-
-/* Optimize backdrop filters */
-.backdrop-blur-optimized {
-  will-change: backdrop-filter;
-}
-
-/* Themed custom scrollbar (right side) */
-/* Firefox */
+/* Scrollbar — lime on near-black */
 html {
   scrollbar-width: thin;
-  /* thumb, track */
-  scrollbar-color: rgba(165, 180, 252, 0.8) rgba(10, 12, 24, 0.6);
+  scrollbar-color: color-mix(in srgb, var(--sharp-accent) 75%, transparent)
+    rgba(10, 10, 10, 0.9);
 }
 
-/* WebKit */
 html::-webkit-scrollbar {
   width: 10px;
   background: transparent;
 }
 
 html::-webkit-scrollbar-track {
-  background: rgba(10, 12, 24, 0.6);
-}
-
-html::-webkit-scrollbar-corner {
-  background: rgba(10, 12, 24, 0.6);
+  background: rgba(10, 10, 10, 0.9);
 }
 
 html::-webkit-scrollbar-thumb {
-  background-image: linear-gradient(
-    180deg,
-    rgba(168, 85, 247, 0.9),
-    rgba(34, 211, 238, 0.9)
-  ); /* purple -> cyan */
-  border-radius: 9999px;
-  border: 2px solid transparent; /* avoid light halo */
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  background: color-mix(in srgb, var(--sharp-accent) 80%, #0a0a0a);
+  border-radius: 2px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 html::-webkit-scrollbar-thumb:hover {
-  background-image: linear-gradient(
-    180deg,
-    rgba(168, 85, 247, 1),
-    rgba(34, 211, 238, 1)
-  );
+  background: var(--sharp-accent);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
-@media (prefers-color-scheme: light) {
-  html {
-    scrollbar-color: rgba(99, 102, 241, 0.7) rgba(0, 0, 0, 0.06);
-  }
-  html::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.06);
-  }
-  html::-webkit-scrollbar-thumb {
-    border-color: transparent;
-  }
-}
-
-/* Disable animations on low-end devices */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -511,18 +317,5 @@ html::-webkit-scrollbar-thumb:hover {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-/* Performance monitoring */
-@media (max-width: 640px) {
-  .backdrop-blur-optimized {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background-color: rgba(255, 255, 255, 0.08);
-  }
-
-  .hover-optimized:hover {
-    transform: none;
   }
 }

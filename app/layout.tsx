@@ -1,38 +1,35 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { MotionProvider } from "../components/motion-provider";
 import Script from "next/script";
+import { OG_IMAGE, SITE_URL } from "../lib/seo";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
   preload: true,
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  adjustFontFallback: true,
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  preload: false,
+  weight: ["400", "500"],
+  variable: "--font-mono",
   adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
-  title: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
+  title: {
+    default: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
+    template: "%s | Rahul Khedekar",
+  },
   description:
-    "Rahul Khedekar - Full Stack Developer (MERN & Next.js). Explore my projects, skills, and contact me for web development services.",
-  keywords: [
-    "Rahul Khedekar",
-    "Full Stack Developer Surat",
-    "MERN Stack Developer Gujarat",
-    "Next.js Developer India",
-    "React.js Developer",
-    "Node.js Developer",
-    "Web Developer Portfolio",
-    "Frontend Developer",
-    "Backend Developer",
-    "JavaScript Developer",
-    "TypeScript Developer",
-    "Software Engineer",
-    "MERN project",
-    "Next.js app",
-    "React frontend",
-    "Node.js backend",
-  ],
+    "Rahul Khedekar — full stack developer building production MERN and Next.js apps, AI Chrome extensions, and WhatsApp/email APIs.",
   authors: [{ name: "Rahul Khedekar" }],
   creator: "Rahul Khedekar",
   publisher: "Rahul Khedekar",
@@ -50,15 +47,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
     description:
-      "Rahul Khedekar - Full Stack Developer (MERN & Next.js). Explore my projects, skills, and contact me for web development services.",
-    url: "https://www.rahulkhedekar.in",
+      "Full stack developer building production MERN and Next.js apps, AI Chrome extensions, and scalable messaging APIs.",
+    url: SITE_URL,
     siteName: "Rahul Khedekar Portfolio",
     images: [
       {
-        url: "https://www.rahulkhedekar.in/og-image.svg",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Rahul Khedekar - Full Stack Developer (MERN & Next.js)",
+        alt: "Rahul Khedekar — Full Stack Developer",
       },
     ],
     locale: "en_US",
@@ -68,14 +65,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
     description:
-      "Rahul Khedekar - Full Stack Developer (MERN & Next.js). Explore my projects, skills, and contact me for web development services.",
+      "Full stack developer for MERN, Next.js, React, Node.js, Chrome extensions, and WhatsApp/email APIs.",
     creator: "@rahulkhedekarr",
-    images: ["https://www.rahulkhedekar.in/og-image.svg"],
+    images: [OG_IMAGE],
   },
-  metadataBase: new URL("https://www.rahulkhedekar.in"),
-  alternates: {
-    canonical: "https://www.rahulkhedekar.in",
-  },
+  metadataBase: new URL(SITE_URL),
 };
 
 export default function RootLayout({
@@ -87,37 +81,25 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Rahul Khedekar",
-    url: "https://www.rahulkhedekar.in",
+    url: SITE_URL,
+    image: OG_IMAGE,
     sameAs: [
       "https://www.linkedin.com/in/rahulkhedekarr",
       "https://github.com/rahulkhedekarr",
     ],
     jobTitle: "Full Stack Developer",
-    worksFor: {
-      "@type": "Organization",
-      name: "Freelance",
-    },
     description:
-      "Full Stack Developer specializing in MERN Stack and Next.js development",
+      "Full stack developer specializing in MERN Stack, Next.js, React, Node.js, Chrome extensions, and messaging APIs",
     knowsAbout: [
       "MERN Stack",
       "Next.js",
       "React.js",
       "Node.js",
       "MongoDB",
-      "Express.js",
-      "TypeScript",
-      "JavaScript",
-      "Web Development",
-      "Frontend Development",
-      "Backend Development",
+      "Chrome Extensions",
+      "WhatsApp Cloud API",
+      "AWS SES",
     ],
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Surat",
-      addressRegion: "Gujarat",
-      addressCountry: "India",
-    },
   };
 
   return (
@@ -128,7 +110,9 @@ export default function RootLayout({
           content="mbF5CGhdELXBL-_Lo8TzonZy3XPmtr8qvKBQvxwmVkc"
         />
       </head>
-      <body className={inter.className}>
+      <body
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

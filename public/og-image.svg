@@ -1,14 +1,12 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="1200" height="630" fill="url(#paint0_linear_0_1)"/>
-<defs>
-<linearGradient id="paint0_linear_0_1" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
-<stop stop-color="#1E2939"/>
-<stop offset="0.5" stop-color="#7C3FA9"/>
-<stop offset="1" stop-color="#1E2939"/>
-</linearGradient>
-</defs>
-<text x="60" y="180" font-family="inter" font-size="80" font-weight="800" fill="white">MERN Stack Developer</text>
-<text x="60" y="280" font-family="inter" font-size="40" font-weight="400" fill="rgba(255,255,255,0.8)">Rahul Khedekar - Full Stack Developer (MERN &amp; Next.js)</text>
-<text x="60" y="340" font-family="inter" font-size="24" font-weight="400" fill="rgba(255,255,255,0.6)">Explore my projects, skills, and contact me for web development services.</text>
-<text x="60" y="400" font-family="inter" font-size="20" font-weight="400" fill="rgba(255,255,255,0.5)">Website: www.rahulkhedekar.in</text>
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <g opacity="0.35" stroke="rgba(255,255,255,0.08)">
+    <path d="M0 63H1200M0 126H1200M0 189H1200M0 252H1200M0 315H1200M0 378H1200M0 441H1200M0 504H1200M0 567H1200"/>
+    <path d="M80 0V630M160 0V630M240 0V630M320 0V630M400 0V630M480 0V630M560 0V630M640 0V630M720 0V630M800 0V630M880 0V630M960 0V630M1040 0V630M1120 0V630"/>
+  </g>
+  <rect x="0" y="0" width="8" height="630" fill="#C8F53C"/>
+  <text x="72" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" letter-spacing="0.28em" fill="#C8F53C">FULL STACK DEVELOPER</text>
+  <text x="72" y="290" font-family="Arial Black, Arial, sans-serif" font-size="88" font-weight="800" fill="#F5F5F5">RAHUL KHEDEKAR</text>
+  <text x="72" y="370" font-family="Arial, sans-serif" font-size="30" fill="#A3A3A3">MERN · Next.js · AI products · messaging APIs</text>
+  <text x="72" y="520" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" fill="#A3A3A3">www.rahulkhedekar.in</text>
 </svg>

@@ -5,30 +5,37 @@ import { m as motion } from "framer-motion";
 
 interface SectionHeaderProps {
   title: string;
+  index?: string;
+  align?: "left" | "center";
 }
 
-const SectionHeader = memo(({ title }: SectionHeaderProps) => {
-  return (
-    <motion.div
-      className="text-center mb-12 sm:mb-16 layout-stable"
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
-    >
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4 text-optimized">
-        {title}
-      </h2>
+const SectionHeader = memo(
+  ({ title, index, align = "left" }: SectionHeaderProps) => {
+    return (
       <motion.div
-        className="w-24 h-1 bg-gradient-to-r from-purple-400 to-cyan-400 mx-auto origin-center"
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
+        className={`mb-10 sm:mb-14 layout-stable ${
+          align === "center" ? "text-center" : "text-left"
+        }`}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-      />
-    </motion.div>
-  );
-});
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        {index ? (
+          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.22em] text-sharp-accent">
+            {index}
+          </p>
+        ) : null}
+        <h2 className="text-3xl font-bold tracking-tight text-sharp-fg sm:text-4xl md:text-5xl">
+          {title}
+        </h2>
+        <div
+          className={`section-rule mt-4 ${align === "center" ? "mx-auto" : ""}`}
+        />
+      </motion.div>
+    );
+  }
+);
 
 SectionHeader.displayName = "SectionHeader";
 

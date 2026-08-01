@@ -1,7 +1,6 @@
 "use client";
 
 import { memo } from "react";
-import { m as motion } from "framer-motion";
 import { Mail, Linkedin } from "lucide-react";
 import { ContactLink as ContactLinkType } from "../../types";
 
@@ -19,25 +18,17 @@ const ContactLink = memo(({ link }: ContactLinkProps) => {
     link.icon || iconMap[link.id as keyof typeof iconMap] || Mail;
 
   return (
-    <motion.a
+    <a
       href={link.href}
-      className="group flex flex-wrap items-center justify-center sm:justify-start space-x-3 backdrop-blur-optimized border border-white/20 rounded-2xl p-4 hover-optimized w-full sm:w-auto"
+      className="group flex w-full items-center gap-3 border border-sharp bg-sharp px-4 py-4 transition-colors hover:border-sharp-accent sm:w-auto"
       target="_blank"
       rel="noopener noreferrer"
-      whileHover={{ scale: 1.04, y: -2 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
     >
-      <motion.span
-        whileHover={{ scale: 1.12, rotate: 4 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-      >
-        <IconComponent className={`w-6 h-6 ${link.color}`} />
-      </motion.span>
-      <span className="text-white font-medium text-optimized break-all min-w-0">
+      <IconComponent className="h-5 w-5 shrink-0 text-sharp-accent" />
+      <span className="min-w-0 break-all font-mono text-sm text-sharp-fg transition-colors group-hover:text-sharp-accent">
         {link.label}
       </span>
-    </motion.a>
+    </a>
   );
 });
 

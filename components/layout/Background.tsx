@@ -1,11 +1,17 @@
 const Background = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none paint-optimized" aria-hidden="true">
-      <div className="absolute -inset-10 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-2xl blob-anim-20" />
-        <div className="absolute top-40 right-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-2xl blob-anim-25" />
-        <div className="absolute bottom-20 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-2xl blob-anim-30" />
-      </div>
+    <div
+      className="pointer-events-none absolute inset-0 overflow-hidden paint-optimized"
+      aria-hidden="true"
+    >
+      <div className="tech-grid tech-grid-fade absolute inset-0 opacity-90" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 50% at 50% -10%, color-mix(in srgb, var(--sharp-accent) 12%, transparent), transparent 55%)",
+        }}
+      />
     </div>
   );
 };

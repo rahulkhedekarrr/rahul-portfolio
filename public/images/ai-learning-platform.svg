@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <rect width="1200" height="750" fill="#0A0A0A"/>
+  <g stroke="#1F1F1F" stroke-width="1">
+    <path d="M0 75H1200M0 150H1200M0 225H1200M0 300H1200M0 375H1200M0 450H1200M0 525H1200M0 600H1200M0 675H1200"/>
+    <path d="M75 0V750M150 0V750M225 0V750M300 0V750M375 0V750M450 0V750M525 0V750M600 0V750M675 0V750M750 0V750M825 0V750M900 0V750M975 0V750M1050 0V750M1125 0V750"/>
+  </g>
+  <rect x="80" y="80" width="180" height="8" fill="#C8F53C"/>
+  <rect x="80" y="140" width="420" height="36" fill="#F5F5F5"/>
+  <rect x="80" y="190" width="380" height="16" fill="#A3A3A3"/>
+  <rect x="80" y="280" width="240" height="180" stroke="#2A2A2A" fill="#111111" stroke-width="2"/>
+  <rect x="340" y="280" width="240" height="180" stroke="#C8F53C" fill="#111111" stroke-width="2"/>
+  <rect x="600" y="280" width="240" height="180" stroke="#2A2A2A" fill="#111111" stroke-width="2"/>
+  <rect x="100" y="310" width="160" height="10" fill="#333333"/>
+  <rect x="100" y="340" width="120" height="10" fill="#333333"/>
+  <rect x="360" y="310" width="160" height="10" fill="#C8F53C"/>
+  <rect x="360" y="340" width="140" height="10" fill="#333333"/>
+  <rect x="360" y="400" width="80" height="30" fill="#C8F53C"/>
+  <rect x="80" y="660" width="360" height="12" fill="#666666"/>
+</svg>

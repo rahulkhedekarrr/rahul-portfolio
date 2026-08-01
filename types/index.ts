@@ -20,6 +20,10 @@ export interface Project {
   description: string;
   image: string;
   technologies: string[];
+  /** One-line engineering / business outcome shown on cards */
+  outcome?: string;
+  /** Internal case-study path, e.g. /projects/lama */
+  slug?: string;
   liveUrl?: string;
   websiteUrl?: string;
 }

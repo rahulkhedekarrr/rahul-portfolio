@@ -10,6 +10,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -21,6 +25,16 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        sharp: {
+          DEFAULT: '#0A0A0A',
+          bg: '#0A0A0A',
+          fg: '#F5F5F5',
+          muted: '#A3A3A3',
+          accent: '#C8F53C',
+          surface: '#111111',
+          border: 'rgba(255,255,255,0.12)',
+        },
+
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -62,6 +76,7 @@ const config: Config = {
           '5': 'hsl(var(--chart-5))',
         },
       },
+
       keyframes: {
         'accordion-down': {
           from: {

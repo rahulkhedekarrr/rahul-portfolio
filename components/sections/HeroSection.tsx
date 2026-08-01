@@ -2,8 +2,8 @@ import HeroCard from "./HeroCard";
 
 const HeroSection = () => {
   return (
-    <section className="relative z-10 px-4 sm:px-6 py-16 sm:py-20 smooth-scroll pt-32 sm:pt-32">
-      <div className="max-w-7xl mx-auto text-center">
+    <section className="relative z-10 flex min-h-[100svh] items-center px-4 py-24 sm:px-6 sm:py-28">
+      <div className="mx-auto w-full max-w-7xl">
         <HeroCard />
       </div>
     </section>

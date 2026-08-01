@@ -10,12 +10,12 @@ const ProjectsSection = ({ projects }: ProjectsSectionProps) => {
   return (
     <section
       id="projects"
-      className="relative z-10 px-4 sm:px-6 py-16 sm:py-20 smooth-scroll pt-20 sm:pt-24"
+      className="relative z-10 px-4 py-20 sm:px-6 sm:py-24 smooth-scroll"
     >
-      <div className="max-w-7xl mx-auto">
-        <SectionHeader title="Projects" />
+      <div className="mx-auto max-w-7xl">
+        <SectionHeader title="Projects" index="03 / projects" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
+        <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-2">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
