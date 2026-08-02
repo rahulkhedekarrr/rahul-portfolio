@@ -57,17 +57,27 @@ const ProjectCard = memo(({ project, index = 0 }: ProjectCardProps) => {
       </div>
 
       <div className="relative z-[1] flex flex-1 flex-col p-5 sm:p-6">
-        <h3 className="mb-2 text-lg font-semibold leading-snug text-sharp-fg sm:text-xl">
-          {project.title}
-        </h3>
-        {project.outcome ? (
-          <p className="mb-3 font-mono text-[11px] leading-relaxed tracking-wide text-sharp-accent sm:text-xs">
-            {project.outcome}
+        <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <h3 className="text-lg font-semibold leading-snug text-sharp-fg sm:text-xl">
+            {project.title}
+          </h3>
+          {project.status ? (
+            <span className="shrink-0 font-mono text-[11px] tracking-wide text-sharp-accent sm:text-xs">
+              {project.status}
+            </span>
+          ) : null}
+        </div>
+
+        {project.role ? (
+          <p className="mb-3 font-mono text-[11px] tracking-wide text-sharp-muted sm:text-xs">
+            {project.role}
           </p>
         ) : null}
+
         <p className="mb-4 flex-1 text-sm leading-relaxed text-sharp-muted">
           {project.description}
         </p>
+
         {project.technologies.length > 0 && (
           <div className="mb-5 flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
@@ -77,6 +87,7 @@ const ProjectCard = memo(({ project, index = 0 }: ProjectCardProps) => {
             ))}
           </div>
         )}
+
         <div className="mt-auto flex items-center justify-between border-t border-sharp pt-4">
           <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-sharp-muted transition-colors group-hover:text-sharp-accent">
             View case →

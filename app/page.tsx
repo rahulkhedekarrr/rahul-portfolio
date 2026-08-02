@@ -9,9 +9,9 @@ import Background from "../components/layout/Background";
 import { createPageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
+  title: "Rahul Khedekar | Full Stack Software Engineer",
   description:
-    "Rahul Khedekar — full stack developer building production MERN and Next.js apps, AI Chrome extensions, and WhatsApp/email APIs.",
+    "Full stack engineer building AI products, SaaS platforms, Chrome extensions, and production web systems.",
   path: "/",
 });
 

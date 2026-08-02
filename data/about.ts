@@ -2,24 +2,23 @@ import { AboutItem } from "../types";
 
 export const aboutItems: AboutItem[] = [
   {
-    id: "experience",
-    title: "Experience",
-    description:
-      "Shipping AI-assisted product UIs and queue-backed messaging services for real product teams",
-    borderColor: "border-sharp-accent",
-  },
-  {
-    id: "specialization",
-    title: "Specialization",
-    description:
-      "Next.js product engineering paired with Node/Express platforms, Redis workers, and MongoDB",
-    borderColor: "border-sharp-accent",
-  },
-  {
     id: "focus",
     title: "Focus",
+    description: "Useful products over clever demos",
+    borderColor: "border-sharp-accent",
+  },
+  {
+    id: "how-i-work",
+    title: "How I work",
     description:
-      "Reliability under load — dedupe, wallets, rate limits, multi-role systems, and production ops",
+      "Start from the problem, ship early, tighten what matters under real use",
+    borderColor: "border-sharp-accent",
+  },
+  {
+    id: "what-i-value",
+    title: "What I value",
+    description:
+      "Clear UX, reliable systems, code you can still reason about later",
     borderColor: "border-sharp-accent",
   },
 ];

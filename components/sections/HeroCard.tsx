@@ -2,6 +2,13 @@
 
 import { m as motion, useReducedMotion } from "framer-motion";
 
+const highlights = [
+  "Chrome Web Store Featured",
+  "Telegram Mini App · 1.7k+ users",
+  "Production-ready systems",
+  "End-to-end product builds",
+];
+
 const HeroCard = () => {
   const reduceMotion = useReducedMotion();
 
@@ -35,7 +42,7 @@ const HeroCard = () => {
         variants={item}
         className="mb-5 font-mono text-[11px] uppercase tracking-[0.22em] text-sharp-accent sm:text-xs"
       >
-        full stack developer // MERN · Next.js · AI products
+        Full Stack Software Engineer
       </motion.p>
 
       <motion.h1
@@ -50,9 +57,9 @@ const HeroCard = () => {
         variants={item}
         className="lcp-text mx-auto mt-6 max-w-2xl text-base leading-relaxed text-sharp-muted sm:mt-8 sm:text-lg md:text-xl"
       >
-        I design and build production web products with React, Next.js, and
-        Node.js — from AI-powered Chrome extensions to queue-backed messaging
-        systems.
+        I build software products — AI tools, SaaS platforms, Chrome
+        extensions, and the systems behind them. For founders and teams who
+        need something that holds up in production.
       </motion.p>
 
       <motion.div
@@ -60,20 +67,21 @@ const HeroCard = () => {
         className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:justify-center sm:gap-4"
       >
         <a href="#projects" className="btn-sharp btn-sharp-primary">
-          View my work
+          See selected work
         </a>
         <a href="#contact" className="btn-sharp btn-sharp-outline">
-          Get in touch
+          Start a conversation
         </a>
       </motion.div>
 
-      <motion.p
+      <motion.ul
         variants={item}
-        className="mx-auto mt-6 max-w-2xl font-mono text-[11px] leading-relaxed tracking-wide text-sharp-muted sm:mt-8 sm:text-xs"
+        className="mx-auto mt-6 flex max-w-2xl flex-wrap gap-x-4 gap-y-2 font-mono text-[11px] leading-relaxed tracking-wide text-sharp-muted sm:mt-8 sm:justify-center sm:text-xs"
       >
-        Next.js · React · Node.js · MongoDB · Chrome Featured extension ·
-        WhatsApp API · 1.7k+ users shipped
-      </motion.p>
+        {highlights.map((itemLabel) => (
+          <li key={itemLabel}>{itemLabel}</li>
+        ))}
+      </motion.ul>
     </motion.div>
   );
 };

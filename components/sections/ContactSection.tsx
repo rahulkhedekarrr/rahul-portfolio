@@ -12,7 +12,7 @@ const ContactSection = () => {
       className="relative z-10 px-4 py-20 sm:px-6 sm:py-24 smooth-scroll"
     >
       <div className="mx-auto max-w-7xl">
-        <SectionHeader title="Contact" index="04 / contact" />
+        <SectionHeader title="Contact" index="05 / contact" />
 
         <motion.div
           className="max-w-3xl border border-sharp bg-sharp-surface p-6 sm:p-10"
@@ -22,11 +22,11 @@ const ContactSection = () => {
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <h3 className="mb-3 text-2xl font-semibold text-sharp-fg">
-            Let&apos;s talk
+            Let&apos;s build something
           </h3>
           <p className="mb-8 max-w-xl text-sharp-muted">
-            Interested in working together, or have a question about a project?
-            Reach out anytime.
+            Got a product in mind? Tell me what you&apos;re trying to ship —
+            happy to figure out if I&apos;m the right person to help.
           </p>
 
           <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

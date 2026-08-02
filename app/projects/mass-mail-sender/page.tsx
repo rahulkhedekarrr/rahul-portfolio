@@ -8,7 +8,7 @@ import { createPageMetadata } from "../../../lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Mass Mail Sender",
   description:
-    "Production email microservice that queues, rate-limits, sends, and tracks mass campaigns via AWS SES, Redis/BullMQ, and MongoDB.",
+    "Email service for large campaigns — queues, rate-limits, and tracks sends through AWS SES so volume stays within provider limits.",
   path: "/projects/mass-mail-sender",
 });
 
@@ -86,8 +86,9 @@ export default function MassMailSenderPage() {
               Mass Mail Sender
             </h1>
             <p className="mb-6 text-sharp-muted">
-              Production email microservice for reliable, rate-limited campaign
-              delivery at scale — built for real cloud constraints, not demos.
+              An email service for large campaigns — queues and rate-limits
+              sends through AWS SES so volume stays within provider limits and
+              stays measurable.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="#architecture" className="btn-sharp btn-sharp-primary">
@@ -98,7 +99,7 @@ export default function MassMailSenderPage() {
               </a>
             </div>
             <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-sharp-muted">
-              Role · Backend / systems engineer
+              Role · Backend / systems
             </p>
           </div>
           <div className="relative aspect-[16/10] min-h-[220px] w-full md:aspect-auto md:min-h-full">

@@ -22,6 +22,10 @@ export interface Project {
   technologies: string[];
   /** One-line engineering / business outcome shown on cards */
   outcome?: string;
+  /** Your role on the project */
+  role?: string;
+  /** Live / Featured / Production status */
+  status?: string;
   /** Internal case-study path, e.g. /projects/lama */
   slug?: string;
   liveUrl?: string;

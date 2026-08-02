@@ -2,7 +2,7 @@
 
 import { memo } from "react";
 import { m as motion } from "framer-motion";
-import { Code, Database, Server, Smartphone } from "lucide-react";
+import { Code, Database, Server, Wrench } from "lucide-react";
 import { SkillCategory } from "../../types";
 
 interface SkillCardProps {
@@ -14,7 +14,7 @@ const iconMap = {
   frontend: Code,
   backend: Server,
   database: Database,
-  tools: Smartphone,
+  tools: Wrench,
 } as const;
 
 const SkillCard = memo(({ category, index = 0 }: SkillCardProps) => {

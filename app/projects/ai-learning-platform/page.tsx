@@ -8,7 +8,7 @@ import { createPageMetadata } from "../../../lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "AI University Learning Platform",
   description:
-    "Multi-role Next.js platform for course authoring, adaptive AI study sessions, practice exams, and instructor understanding analytics.",
+    "University learning platform for course authoring, AI-guided study sessions, practice exams, and instructor insights.",
   path: "/projects/ai-learning-platform",
 });
 
@@ -83,15 +83,15 @@ export default function AiLearningPlatformPage() {
         <div className="grid items-stretch md:grid-cols-2">
           <div className="flex flex-col justify-center border-b border-sharp p-6 sm:p-8 md:border-b-0 md:border-r">
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-sharp-accent">
-              Case study // 01
+              Case study // 05
             </p>
             <h1 className="mb-3 text-3xl font-bold tracking-tight text-sharp-fg sm:text-4xl md:text-5xl">
               AI University Learning Platform
             </h1>
             <p className="mb-6 text-sharp-muted">
-              Active learning frontend that turns course content into adaptive
-              AI study sessions, practice exams, and instructor analytics —
-              not passive video watching.
+              A platform for universities — instructors build courses, students
+              get AI-guided study and practice, and instructors see how learning
+              is going.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="#architecture" className="btn-sharp btn-sharp-primary">
@@ -102,7 +102,7 @@ export default function AiLearningPlatformPage() {
               </a>
             </div>
             <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-sharp-muted">
-              Role · Frontend architecture & product engineering
+              Role · Frontend / product
             </p>
           </div>
           <div className="relative aspect-[16/10] min-h-[220px] w-full md:aspect-auto md:min-h-full">

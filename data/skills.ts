@@ -1,5 +1,16 @@
-import { Code, Database, Server, Smartphone } from "lucide-react";
+import { Code, Database, Server, Wrench } from "lucide-react";
 import { SkillCategory } from "../types";
+
+export const workAreas = [
+  "AI Applications",
+  "Chrome Extensions",
+  "SaaS Platforms",
+  "Custom Business Software",
+  "Backend Systems",
+  "Automation",
+  "API Integrations",
+  "Dashboards",
+];
 
 export const skillCategories: SkillCategory[] = [
   {
@@ -7,62 +18,35 @@ export const skillCategories: SkillCategory[] = [
     title: "Frontend",
     icon: Code,
     color: "text-sharp-accent",
-    skills: [
-      "React.js",
-      "Next.js",
-      "MERN Stack",
-      "TypeScript / JavaScript",
-      "Tailwind CSS",
-      "TanStack Query",
-      "Zustand",
-      "Radix / CVA patterns",
-      "Framer Motion",
-    ],
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
   },
   {
     id: "backend",
     title: "Backend",
     icon: Server,
     color: "text-sharp-accent",
-    skills: [
-      "Node.js",
-      "Express.js",
-      "REST APIs",
-      "AI / LLM API integration",
-      "BullMQ + Redis queues",
-      "JWT auth",
-      "Joi validation",
-      "AWS SES",
-      "Meta WhatsApp Cloud API",
-    ],
+    skills: ["Node.js", "Express", "REST APIs", "Background jobs"],
   },
   {
     id: "database",
-    title: "Database",
+    title: "Databases",
     icon: Database,
     color: "text-sharp-accent",
-    skills: [
-      "MongoDB",
-      "Mongoose",
-      "Indexing & query optimization",
-      "Transactional / wallet patterns",
-    ],
+    skills: ["MongoDB", "Redis"],
   },
   {
     id: "tools",
-    title: "Tools & Others",
-    icon: Smartphone,
+    title: "Cloud & AI",
+    icon: Wrench,
     color: "text-sharp-accent",
     skills: [
-      "Chrome Extensions (MV3)",
       "Vercel",
-      "Docker",
       "Railway",
-      "OpenAPI / Swagger",
-      "Google OAuth / Firebase",
-      "Cloudinary",
-      "Telegram Mini Apps",
-      "Git & GitHub",
+      "OpenAI / LLM APIs",
+      "AWS SES",
+      "WhatsApp Cloud API",
+      "Docker",
+      "Chrome Extensions",
     ],
   },
 ];

@@ -25,18 +25,22 @@ const AboutSection = ({ aboutItems }: AboutSectionProps) => {
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <h3 className="mb-4 text-xl font-semibold text-sharp-fg sm:text-2xl">
-              Products that ship — and stay up
+              I like building things people actually use
             </h3>
             <p className="mb-4 leading-relaxed text-sharp-muted">
-              I build AI-assisted product interfaces and the Node platforms
-              behind them. Recent work spans adaptive learning frontends, a
-              Chrome MV3 AI email assistant, and queue-backed WhatsApp / email
-              engines.
+              Most of my work starts with a real problem — too many emails,
+              unreliable messaging, learning tools that don&apos;t adapt. I
+              enjoy taking that from a rough idea to something running in
+              production.
+            </p>
+            <p className="mb-4 leading-relaxed text-sharp-muted">
+              I care about the whole product: how it feels to use, how the
+              backend holds up, and whether someone else can maintain it six
+              months later. I enjoy working across the stack—from the interface
+              people use to the systems that keep everything running.
             </p>
             <p className="leading-relaxed text-sharp-muted">
-              Comfortable owning the hard parts: auth, RBAC, rate limits,
-              wallets, workers, and the UX that makes complex systems feel
-              simple.
+              I&apos;m happiest when the work is useful, not just clever.
             </p>
           </motion.div>
 

@@ -8,7 +8,7 @@ import { createPageMetadata } from "../../../lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "WhatsApp Message Service",
   description:
-    "Queue-backed WhatsApp Cloud API platform with JWT auth, prepaid wallet billing, campaign tracking, and automatic refunds on delivery failure.",
+    "WhatsApp campaign service with prepaid billing, delivery tracking, and refunds when messages fail — built on Meta's Cloud API.",
   path: "/projects/whatsapp-message-service",
 });
 
@@ -88,9 +88,9 @@ export default function WhatsappMessageServicePage() {
               WhatsApp Message Service
             </h1>
             <p className="mb-6 text-sharp-muted">
-              Prepaid, queue-backed WhatsApp campaigns with ACID billing and
-              Meta Cloud API delivery — designed for frontend clients, not a
-              demo UI.
+              A service for teams sending WhatsApp campaigns — prepaid
+              billing, delivery tracking, and refunds when messages fail so
+              campaigns don&apos;t silently break.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="#architecture" className="btn-sharp btn-sharp-primary">
@@ -101,7 +101,7 @@ export default function WhatsappMessageServicePage() {
               </a>
             </div>
             <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-sharp-muted">
-              Role · Backend / platform engineer
+              Role · Backend / platform
             </p>
           </div>
           <div className="relative aspect-[16/10] min-h-[220px] w-full md:aspect-auto md:min-h-full">

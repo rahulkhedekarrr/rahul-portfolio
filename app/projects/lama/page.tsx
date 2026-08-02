@@ -8,7 +8,7 @@ import { createPageMetadata } from "../../../lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Lama Gaming OS — Telegram Mini App",
   description:
-    "Telegram-native gamified platform with Mini App, admin panel, TonConnect, and 1.7k+ users — built with Next.js, Node.js, and MongoDB.",
+    "Telegram-native gaming product with a Mini App, admin panel, and 1.7k+ live users — rewards, referrals, and day-to-day ops tools.",
   path: "/projects/lama",
 });
 
@@ -25,13 +25,13 @@ const sections = [
     id: "overview",
     index: "01",
     title: "Overview",
-    body: "Lama Gaming Ecosystem is a complete end-to-end solution built for engagement, growth, and automation within Telegram. It combines a feature-rich Telegram Mini App for users with a powerful Admin Panel for management, creating a scalable and secure ecosystem tailored to gamified rewards, referral campaigns, and Web3 integration.",
+    body: "Lama is a Telegram-native gaming product with two surfaces: a Mini App for players, and an admin panel for the people running it. Players complete tasks, earn rewards, refer friends, and connect a TON wallet. Operators manage users, campaigns, ads, and rewards from the dashboard.",
   },
   {
     id: "architecture",
     index: "02",
     title: "Architecture",
-    body: "Designed with a modern React/Next.js frontend, backed by a Node.js, Express, and MongoDB architecture, and complemented by a Next.js and TypeScript-powered Admin Panel, the project demonstrates how seamless user experiences can coexist with enterprise-level control and analytics.",
+    body: "The Mini App and admin panel are Next.js frontends on a Node.js and Express API with MongoDB. Telegram handles login and distribution; the backend owns tasks, rewards, referrals, and wallet-related flows. The admin panel is built for daily ops — not just demos.",
   },
 ];
 
@@ -81,7 +81,7 @@ const highlights = [
 const stats = [
   { label: "Users onboarded", value: "1.7k+" },
   { label: "Surfaces", value: "Mini App + Admin" },
-  { label: "Stack", value: "MERN + Next" },
+  { label: "Stack", value: "Next.js · Node · MongoDB" },
   { label: "Status", value: "Live" },
 ];
 
@@ -106,13 +106,15 @@ export default function LamaProjectPage() {
         <div className="grid items-stretch md:grid-cols-2">
           <div className="flex flex-col justify-center border-b border-sharp p-6 sm:p-8 md:border-b-0 md:border-r">
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-sharp-accent">
-              Case study // 05
+              Case study // 02
             </p>
             <h1 className="mb-3 text-3xl font-bold tracking-tight text-sharp-fg sm:text-4xl md:text-5xl">
-              Lama Gaming Ecosystem
+              Lama Gaming OS
             </h1>
             <p className="mb-6 text-sharp-muted">
-              Telegram Mini App & Admin Panel
+              A Telegram-native gaming product with a full admin panel — live
+              with 1.7k+ users. Built for players inside Telegram and the
+              operators who run it day to day.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -132,6 +134,9 @@ export default function LamaProjectPage() {
                 Website
               </Link>
             </div>
+            <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-sharp-muted">
+              Role · Full stack
+            </p>
           </div>
           <div className="relative aspect-[16/10] min-h-[220px] w-full md:aspect-auto md:min-h-full">
             <Image

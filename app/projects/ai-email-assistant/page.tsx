@@ -9,7 +9,7 @@ import { createPageMetadata } from "../../../lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "AI Email Assistant (Chrome Extension)",
   description:
-    "Chrome Web Store Featured Manifest V3 side-panel assistant for Gmail and Outlook — AI replies, summaries, voice compose, and cost-aware metering.",
+    "Chrome Web Store Featured side-panel assistant for Gmail and Outlook — AI replies, summaries, and voice compose without leaving the inbox.",
   path: "/projects/ai-email-assistant",
 });
 
@@ -84,14 +84,14 @@ export default function AiEmailAssistantPage() {
         <div className="grid items-stretch md:grid-cols-2">
           <div className="flex flex-col justify-center border-b border-sharp p-6 sm:p-8 md:border-b-0 md:border-r">
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-sharp-accent">
-              Case study // 02
+              Case study // 01
             </p>
             <h1 className="mb-3 text-3xl font-bold tracking-tight text-sharp-fg sm:text-4xl md:text-5xl">
               AI Email Assistant
             </h1>
             <p className="mb-3 text-sharp-muted">
-              Manifest V3 side-panel assistant for Gmail & Outlook — smart
-              replies, summaries, and voice compose without leaving the inbox.
+              Side-panel assistant for Gmail and Outlook — AI replies, thread
+              summaries, and voice compose without leaving the inbox.
             </p>
             <p className="mb-4 font-mono text-[11px] text-sharp-muted">
               Built as Replybox for Gmail & Outlook Web
@@ -118,7 +118,7 @@ export default function AiEmailAssistantPage() {
               </a>
             </div>
             <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-sharp-muted">
-              Role · Extension + API integration owner
+              Role · Full product
             </p>
           </div>
           <div className="relative aspect-[16/10] min-h-[220px] w-full md:aspect-auto md:min-h-full">

@@ -25,11 +25,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
+    default: "Rahul Khedekar | Full Stack Software Engineer",
     template: "%s | Rahul Khedekar",
   },
   description:
-    "Rahul Khedekar — full stack developer building production MERN and Next.js apps, AI Chrome extensions, and WhatsApp/email APIs.",
+    "Full stack engineer building AI products, SaaS platforms, Chrome extensions, and production web systems.",
   authors: [{ name: "Rahul Khedekar" }],
   creator: "Rahul Khedekar",
   publisher: "Rahul Khedekar",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
+    title: "Rahul Khedekar | Full Stack Software Engineer",
     description:
-      "Full stack developer building production MERN and Next.js apps, AI Chrome extensions, and scalable messaging APIs.",
+      "Full stack engineer building AI products, SaaS platforms, Chrome extensions, and production web systems.",
     url: SITE_URL,
     siteName: "Rahul Khedekar Portfolio",
     images: [
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Rahul Khedekar — Full Stack Developer",
+        alt: "Rahul Khedekar — Full Stack Software Engineer",
       },
     ],
     locale: "en_US",
@@ -63,9 +63,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rahul Khedekar | Full Stack Developer (MERN & Next.js)",
+    title: "Rahul Khedekar | Full Stack Software Engineer",
     description:
-      "Full stack developer for MERN, Next.js, React, Node.js, Chrome extensions, and WhatsApp/email APIs.",
+      "Full stack engineer building AI products, SaaS platforms, Chrome extensions, and production web systems.",
     creator: "@rahulkhedekarr",
     images: [OG_IMAGE],
   },
@@ -94,18 +94,18 @@ export default function RootLayout({
       "https://www.linkedin.com/in/rahulkhedekarr",
       "https://github.com/rahulkhedekarr",
     ],
-    jobTitle: "Full Stack Developer",
+    jobTitle: "Full Stack Software Engineer",
     description:
-      "Full stack developer specializing in MERN Stack, Next.js, React, Node.js, Chrome extensions, and messaging APIs",
+      "Full stack engineer building AI products, SaaS platforms, Chrome extensions, and production web systems",
     knowsAbout: [
-      "MERN Stack",
       "Next.js",
-      "React.js",
+      "React",
       "Node.js",
       "MongoDB",
       "Chrome Extensions",
-      "WhatsApp Cloud API",
-      "AWS SES",
+      "AI Applications",
+      "SaaS Products",
+      "API Integrations",
     ],
   };
 
